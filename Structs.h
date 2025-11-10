@@ -21,44 +21,10 @@ typedef struct _PLAYER_INFO PLAYER_INFO, *PPLAYER_INFO, **PPPLAYER_INFO;
 #define SZ_PLAYER_INFO sizeof(_PLAYER_INFO)
 #define PLAYER_INFO_NULL (PPLAYER_INFO)0
 
-typedef struct _ANIM_INFO ANIM_INFO, *PANIM_INFO, **PPANIM_INFO;
-#define SZ_ANIM_INFO sizeof(_ANIM_INFO)
-#define ANIM_INFO_NULL (PANIM_INFO)0
-
-
-struct _ANIM_INFO
-{
-	INT        AI_ActiveFlag;    // Is the Animation Active
-	INT        AI_Ident;         // Ident of the Animation
-	INT        AI_Type;          // Do animation once, Loop Animation
-
-	INT        AI_MaxSprites;    // This is for sprite List
-	INT        AI_CurSprite;     // This is current sprite rendered
-
-	INT        AI_FramesInTimer; // This is for time between switching frames
-	INT        AI_FrameTimer;    // Incremented Every Frame and checked against MaxFrames
-
-	//	SDL_FRect  AI_Pos;           // Where we want the animation;
-	PSDL_FRect AI_SpriteList;    // Where the Sprites are in the Tile Set 
-};
-
 
 struct _PLAYER_INFO
 {
 	FLOAT       PI_Scale;
-
-	SDL_FRect   PI_GlobalPos;
-	SDL_FRect   PI_LocalPos;
-
-	INT         PI_MaxSprites;    // This is for sprite List
-	INT         PI_CurSprite;     // This is current sprite rendered
-	INT         PI_FramesInTimer; // This is for time between switching frames
-	INT         PI_FrameTimer;    // Incremented Every Frame and checked against MaxFrames
-
-	FLOAT       PI_DirectionX;
-	FLOAT       PI_DirectionY;
-
-	PSDL_FRect  PI_SpriteList;    // Where the sprites are located
 };
 
 struct _BUTTON_INFO
@@ -107,8 +73,6 @@ struct _GAME_INFO
 
 	PSDL_FRect    GI_StarField;
 
-	INT           GI_ShowPathFlag;
-
 	PSDL_Window   GI_MainWindow;
 	PSDL_Renderer GI_MainRenderer;
 	PMix_Music    GI_BkgMusic;
@@ -125,7 +89,6 @@ struct _GAME_INFO
 	PSDL_Texture  GI_StartOfGameTexture;
 	PSDL_Texture  GI_GameBoardTexture;
 	PSDL_Texture  GI_BackgroundTexture;
-	PSDL_Texture  GI_PlayerTexture;
 
 };
 

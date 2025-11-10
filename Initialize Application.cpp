@@ -20,8 +20,7 @@ INT InitializeApplication(PGAME_INFO GIptr)
 	GIptr->GI_MouseDownFlag = FALSE;
 	GIptr->GI_MouseUpFlag = TRUE;
 	GIptr->GI_RNGState = SDL_rand_bits();
-	GIptr->GI_CurrentLevel = LEVEL_ONE;
-	GIptr->GI_ShowPathFlag = FALSE;
+
 
 	sprintf_s(GIptr->GI_PlayerName, MAX_NAME_LENGTH, "%s", "GUEST");
 
@@ -79,12 +78,6 @@ INT InitializeApplication(PGAME_INFO GIptr)
 	if ((GIptr->GI_TextTexture = TEXTURE_Load(GIptr, TEXT_TEXTURE)) == NULL)
 	{
 		SDL_Log("Couldn't create.load texture: %s", SDL_GetError());
-		return FALSE;
-	}
-
-	if ((GIptr->GI_PlayerTexture = TEXTURE_Load(GIptr, PLAYER_TEXTURE)) == NULL)
-	{
-		SDL_Log("Couldn't create.load texture: [%s] -- ERROR: [%s]", PLAYER_TEXTURE, SDL_GetError());
 		return FALSE;
 	}
 

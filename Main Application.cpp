@@ -6,14 +6,14 @@
 
 INT main(INT Argc, PCHAR Argv[])
 {
-	//	extern PGAME_INFO Gameptr;
+		extern PGAME_INFO Gameptr;
 
 	printf("Hello World!\n");
 
-	//	InitializeApplication(Gameptr);
-	//	StartOfGameHandler(Gameptr);
-	//	GameLoop(Gameptr);
-	//	TerminateApplication(Gameptr);
+		InitializeApplication(Gameptr);
+		StartOfGameHandler(Gameptr);
+		GameLoop(Gameptr);
+		TerminateApplication(Gameptr);
 
 	return(TRUE);
 }
