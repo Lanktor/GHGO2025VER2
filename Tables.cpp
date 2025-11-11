@@ -41,8 +41,9 @@ SDL_Color GradientColor[] =
 
 SDL_FRect BasicAreas[] = 
 {
-	{460,  70, 950, 715},
-	{600, 875, 710, 140},
+	{460,  70, 950, 715}, // Game Board
+	{600, 875, 710, 140}, // Dice
+	{-1}, // END OF LIST
 };
 
 SDL_FRect HiScoreBox[] =

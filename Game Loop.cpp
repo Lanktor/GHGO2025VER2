@@ -63,6 +63,7 @@ INT GameLoop(PGAME_INFO GIptr)
 				if (Event.button.button == SDL_BUTTON_LEFT)
 				{
 					GIptr->GI_MouseDownFlag = TRUE;
+					GAMEBOARD_ProcessMouseClick(GIptr);
 					printf("MX = [%.02f] MY = [%.02f]\n", GIptr->GI_MouseX, GIptr->GI_MouseY);
 				}
 				if (Event.button.button == SDL_BUTTON_RIGHT)

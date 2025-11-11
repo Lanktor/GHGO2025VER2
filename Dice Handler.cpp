@@ -27,8 +27,6 @@ INT DICE_Render(PGAME_INFO GIptr)
 		else
 		{
 			Srceptr = (DIptr->DI_HoverFlag == GAMEBOARD_FLAG_HOVER_ON) ? RIptr->RI_DiceSrceHover : RIptr->RI_DiceSrce;
-
-			if(DIptr->DI_HoverFlag == GAMEBOARD_FLAG_HOVER_ON) printf("DICE Button On\n");
 			SDL_RenderTexture(GIptr->GI_MainRenderer, GIptr->GI_MainTexture, &Srceptr[DIptr->DI_CurIdent], &DIptr->DI_Pos);
 		}
 	}
@@ -58,7 +56,6 @@ INT DICE_Initiate(PGAME_INFO GIptr)
 	extern SDL_FRect GameDiceSrce[];
 	extern SDL_FRect GameDiceHover[];
 
-printf("Dice Initiate\n");
 	RIptr = &GIptr->GI_RollData;
 
 	RIptr->RI_CurRoll = 0;
@@ -98,5 +95,28 @@ INT DICE_Clear(PGAME_INFO GIptr, PDICE_INFO DIptr)
 		DIptr->DI_SaveIdent = DICE_NO_IDENT;
 		DIptr->DI_CurIdent = DICE_NO_IDENT;
 	}
+	return(TRUE);
+}
+
+INT DICE_ProcessPick(PGAME_INFO GIptr, PSDL_FRect Mptr)
+{
+	INT        Die;
+	PROLL_INFO RIptr;
+	PDICE_INFO DIptr;
+
+	RIptr = &GIptr->GI_RollData;
+	DIptr = RIptr->RI_DiceRolls[RIptr->RI_CurRoll];
+
+	for (Die = 0; Die < MAX_DICE; Die++, DIptr++)
+	{
+		if ((SDL_HasRectIntersectionFloat(Mptr, &DIptr->DI_Pos)) == TRUE)
+		{
+			break;
+		}
+	}
+
+	if(Die == MAX_DICE) return(FALSE);
+
+printf("DIE = [%d]\n", Die);
 	return(TRUE);
 }

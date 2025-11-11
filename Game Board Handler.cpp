@@ -270,3 +270,43 @@ INT GAMEBOARD_RenderBorder(PGAME_INFO GIptr)
 	}
 	return(TRUE);
 }
+
+INT GAMEBOARD_ProcessMouseClick(PGAME_INFO GIptr)
+{
+	INT              Func;
+	SDL_FRect        MouseRect;
+	PSDL_FRect       Ptr;
+	extern SDL_FRect BasicAreas[];
+
+	MouseRect.x = GIptr->GI_MouseX;
+	MouseRect.y = GIptr->GI_MouseY;
+	MouseRect.w = 1;
+	MouseRect.h = 1;
+
+	Ptr = BasicAreas;
+	for (Func = 0; Ptr->x != -1; Ptr++, Func++)
+	{
+		if ((SDL_HasRectIntersectionFloat(&MouseRect, Ptr)) == TRUE)
+		{
+			break;
+		}
+	}
+
+	if(Ptr->x == -1) return(FALSE);
+
+	switch (Func)
+	{
+		case 0:
+			printf("Upper Process\n");
+		break;
+
+		case 1:
+			printf("Dice Process\n");
+			DICE_ProcessPick(GIptr, &MouseRect);
+		break;
+
+		default:
+		break;
+	}
+	return(TRUE);
+}
