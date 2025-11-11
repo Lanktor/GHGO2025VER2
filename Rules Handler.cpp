@@ -120,12 +120,12 @@ INT RULESHANDLER_DisplayData(PGAME_INFO GIptr)
 {
 	CHAR      Text[1024];
 	SDL_FRect Dest;
-	SDL_Color TopTextColor = { 216, 207, 169 };
+	SDL_Color TopTextColor = { 211, 243, 241 };
 	SDL_Color BlackTextColor = { 0,   0,   0 };
 
 	Dest.y = 60;
 	sprintf_s(Text, sizeof(Text), "RULES", GIptr->GI_CurrentLevel);
-	Dest.x = TEXT_CalculateCenterText(GIptr, Text, 4);
+	Dest.x = TEXT_CalculateCenterText(GIptr, Text, 4, GIptr->GI_ScreenWidth);
 
 	TEXT_WriteTextRaised(GIptr, TopTextColor, BlackTextColor, &Dest, Text, 4, 4);
 

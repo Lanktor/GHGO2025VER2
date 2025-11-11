@@ -12,7 +12,7 @@ INT BUTTON_Update(PGAME_INFO GIptr, PBUTTON_INFO BIptr, INT DownOffset, INT Hove
 {
 	INT       FontId;
 	SDL_FRect Srce, Dest;
-	SDL_Color Color_TEXT = { 51, 27, 26 };
+	SDL_Color Color_TEXT = { 211, 243, 241 };
 
 	for (; BIptr->BI_Ident != -1; BIptr++)
 	{

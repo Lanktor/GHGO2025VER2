@@ -152,7 +152,7 @@ INT ENDOFGAMEHANDLER_DisplayData(PGAME_INFO GIptr)
 
 	Dest.y = 40;
 	sprintf_s(Text, sizeof(Text), "CREDITS", GIptr->GI_CurrentLevel);
-	Dest.x = TEXT_CalculateCenterText(GIptr, Text, 4);
+	Dest.x = TEXT_CalculateCenterText(GIptr, Text, 4, GIptr->GI_ScreenWidth);
 
 	//	TEXT_WriteTextRaised(GIptr, WhiteTextColor, BlackTextColor, &Dest, Text, 4, 4);
 

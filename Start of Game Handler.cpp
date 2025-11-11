@@ -61,7 +61,12 @@ INT StartOfGameHandler(PGAME_INFO GIptr)
 						BUTTON_ResetButtonState(GIptr, StartGameButtons, BUTTON_STATE_UP);
 						RulesHandler(GIptr);
 					}
-					if (ButtonIdent == BUTTON_IDENT_PLAY) Quit = TRUE;
+					if (ButtonIdent == BUTTON_IDENT_PLAY)
+					{
+						DICE_Initiate(GIptr);
+						DICE_Roll(GIptr, GIptr->GI_RollData.RI_DiceRolls[GIptr->GI_RollData.RI_CurRoll]);
+						Quit = TRUE;
+					}
 				}
 				if (Event.button.button == SDL_BUTTON_RIGHT)
 				{

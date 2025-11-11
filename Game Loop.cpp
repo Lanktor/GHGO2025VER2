@@ -47,6 +47,9 @@ INT GameLoop(PGAME_INFO GIptr)
 				}
 				if (Event.key.scancode == SDL_SCANCODE_Q)
 				{
+					DICE_Initiate(GIptr);
+					DICE_Clear(GIptr, GIptr->GI_RollData.RI_DiceRolls[GIptr->GI_RollData.RI_CurRoll]);
+					DICE_Roll(GIptr, GIptr->GI_RollData.RI_DiceRolls[GIptr->GI_RollData.RI_CurRoll]);
 				}
 				if ((Event.key.scancode == SDL_SCANCODE_A) || (Event.key.scancode == SDL_SCANCODE_LEFT))
 				{
@@ -60,6 +63,7 @@ INT GameLoop(PGAME_INFO GIptr)
 				if (Event.button.button == SDL_BUTTON_LEFT)
 				{
 					GIptr->GI_MouseDownFlag = TRUE;
+					printf("MX = [%.02f] MY = [%.02f]\n", GIptr->GI_MouseX, GIptr->GI_MouseY);
 				}
 				if (Event.button.button == SDL_BUTTON_RIGHT)
 				{
@@ -98,13 +102,15 @@ INT GameLoop(PGAME_INFO GIptr)
 		GIptr->GI_DeltaTime = (GIptr->GI_CurTime - GIptr->GI_PrevTime) / 1000.0f;
 		GIptr->GI_PrevTime = GIptr->GI_CurTime;
 
-
-		SDL_SetRenderDrawColor(GIptr->GI_MainRenderer, 0x80, 0x80, 0x80, 0x00);
+		GAMEBOARD_ProcessHover(GIptr);
+		SDL_SetRenderDrawColor(GIptr->GI_MainRenderer, 0x08, 0x71, 0x7C, 0xFF);
 		SDL_RenderClear(GIptr->GI_MainRenderer);
 
-//		SDL_RenderTexture(GIptr->GI_MainRenderer, GIptr->GI_BackgroundTexture, NULL, NULL);
+		SDL_RenderTexture(GIptr->GI_MainRenderer, GIptr->GI_BackgroundTexture, NULL, NULL);
+//		TEST_Render(GIptr);
+		GAMEBOARD_Render(GIptr);
+		DICE_Render(GIptr);
 
-		TEST_Render(GIptr);
 
 		SDL_RenderPresent(GIptr->GI_MainRenderer);
 

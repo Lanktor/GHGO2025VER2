@@ -1,5 +1,7 @@
 C:\GHGO2025VER2\Button Handler.cpp;C:\GHGO2025VER2\GHGO2025VER2\x64\Release\Button Handler.obj
+C:\GHGO2025VER2\Dice Handler.cpp;C:\GHGO2025VER2\GHGO2025VER2\x64\Release\Dice Handler.obj
 C:\GHGO2025VER2\End of Game Handler.cpp;C:\GHGO2025VER2\GHGO2025VER2\x64\Release\End of Game Handler.obj
+C:\GHGO2025VER2\Game Board Handler.cpp;C:\GHGO2025VER2\GHGO2025VER2\x64\Release\Game Board Handler.obj
 C:\GHGO2025VER2\Game Loop.cpp;C:\GHGO2025VER2\GHGO2025VER2\x64\Release\Game Loop.obj
 C:\GHGO2025VER2\Initialize Application.cpp;C:\GHGO2025VER2\GHGO2025VER2\x64\Release\Initialize Application.obj
 C:\GHGO2025VER2\Main Application.cpp;C:\GHGO2025VER2\GHGO2025VER2\x64\Release\Main Application.obj
@@ -10,3 +12,4 @@ C:\GHGO2025VER2\Terminate Application.cpp;C:\GHGO2025VER2\GHGO2025VER2\x64\Relea
 C:\GHGO2025VER2\Test Stuff.cpp;C:\GHGO2025VER2\GHGO2025VER2\x64\Release\Test Stuff.obj
 C:\GHGO2025VER2\Text Handler.cpp;C:\GHGO2025VER2\GHGO2025VER2\x64\Release\Text Handler.obj
 C:\GHGO2025VER2\Texture Handler.cpp;C:\GHGO2025VER2\GHGO2025VER2\x64\Release\Texture Handler.obj
+C:\GHGO2025VER2\Utilities.cpp;C:\GHGO2025VER2\GHGO2025VER2\x64\Release\Utilities.obj

@@ -7,17 +7,18 @@
 INT TEXT_WriteText(PGAME_INFO GIptr, SDL_Color Color, PSDL_FRect Dest, const char *Text, INT Scale)
 {
 	INT              I, Len, Value;
-	PSDL_FRect       TIptr, AlphaFont, NumericFont;
+	PSDL_FRect       TIptr, UCFont, LCFont, NSFont;
 	SDL_FRect        SaveDest;
-	extern SDL_FRect FontAlphaWhite[];
-	extern SDL_FRect FontNumericWhite[];
+	extern SDL_FRect FontUpperCase[];
+	extern SDL_FRect FontLowerCase[];
+	extern SDL_FRect FontNumericSpecials[];
 
 	Len = strlen(Text);
 	memcpy(&SaveDest, Dest, sizeof(SDL_Rect));
 
-	AlphaFont = FontAlphaWhite;
-	NumericFont = FontNumericWhite;
-
+	UCFont = FontUpperCase;
+	LCFont = FontLowerCase;
+	NSFont = FontNumericSpecials;
 
 	TIptr = NULL;
 	for (I = 0; I < Len; I++)
@@ -32,23 +33,28 @@ INT TEXT_WriteText(PGAME_INFO GIptr, SDL_Color Color, PSDL_FRect Dest, const cha
 		if ((Value >= 48) && (Value <= 57))
 		{
 			Value -= 48;
-			TIptr = &NumericFont[Value];
+			TIptr = &NSFont[Value];
 		}
 		else if ((Value >= 65) && (Value <= 90))
 		{
 			Value -= 65;
-			TIptr = &AlphaFont[Value];
+			TIptr = &UCFont[Value];
+		}
+		else if ((Value >= 97) && (Value <= 122))
+		{
+			Value -= 97;
+			TIptr = &LCFont[Value];
 		}
 		else
 		{
 			if (Value == 45) //Minus Sign
 			{
-				TIptr = &NumericFont[10];
+				TIptr = &NSFont[10];
 			}
 
 			if (Value == 58) // Full Colon
 			{
-				TIptr = &NumericFont[11];
+				TIptr = &NSFont[11];
 			}
 		}
 
@@ -95,16 +101,18 @@ INT TEXT_RenderScore(PGAME_INFO GIptr)
 	return(TRUE);
 }
 
-INT TEXT_CalculateCenterText(PGAME_INFO GIptr, const char *Text, INT Scale)
+INT TEXT_CalculateCenterText(PGAME_INFO GIptr, const char *Text, INT Scale, INT ItemWidth)
 {
 	INT              I, Len, Value, Width, XOffset;
-	PSDL_FRect       TIptr, AlphaFont, NumericFont;
-	extern SDL_FRect FontAlphaWhite[];
-	extern SDL_FRect FontNumericWhite[];
+	PSDL_FRect       TIptr, UCFont, LCFont, NSFont;
+	extern SDL_FRect FontUpperCase[];
+	extern SDL_FRect FontLowerCase[];
+	extern SDL_FRect FontNumericSpecials[];
 
 
-	AlphaFont = FontAlphaWhite;
-	NumericFont = FontNumericWhite;
+	UCFont = FontUpperCase;
+	LCFont = FontLowerCase;
+	NSFont = FontNumericSpecials;
 
 	TIptr = NULL;
 	Len = strlen(Text);
@@ -121,43 +129,23 @@ INT TEXT_CalculateCenterText(PGAME_INFO GIptr, const char *Text, INT Scale)
 		if ((Value >= 48) && (Value <= 57))
 		{
 			Value -= 48;
-			TIptr = &NumericFont[Value];
+			TIptr = &NSFont[Value];
 		}
 		else if ((Value >= 65) && (Value <= 90))
 		{
 			Value -= 65;
-			TIptr = &AlphaFont[Value];
+			TIptr = &UCFont[Value];
 		}
 		else
 		{
-			if (Value == 40)
-			{
-				TIptr = &AlphaFont[26];
-			}
-			if (Value == 41)
-			{
-				TIptr = &AlphaFont[27];
-
-			}
-			if (Value == 43)
-			{
-				TIptr = &AlphaFont[28];
-
-			}
-			if (Value == 33)
-			{
-				TIptr = &AlphaFont[29];
-
-			}
-
 			if (Value == 45) //Minus Sign
 			{
-				TIptr = &NumericFont[10];
+				TIptr = &NSFont[10];
 			}
 
 			if (Value == 58) // Full Colon
 			{
-				TIptr = &NumericFont[11];
+				TIptr = &NSFont[11];
 			}
 		}
 
@@ -170,6 +158,7 @@ INT TEXT_CalculateCenterText(PGAME_INFO GIptr, const char *Text, INT Scale)
 		Width += (TIptr->w * Scale) + 2;
 	}
 
-	XOffset = (GIptr->GI_ScreenWidth - Width) / 2;
+	XOffset = (ItemWidth - Width) / 2;
 	return(XOffset);
 }
+

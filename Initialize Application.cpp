@@ -58,6 +58,11 @@ INT InitializeApplication(PGAME_INFO GIptr)
 		SDL_Log("Couldn't create.load texture: %s", SDL_GetError());
 		return FALSE;
 	}
+	if ((GIptr->GI_GameBoardTexture = TEXTURE_Load(GIptr, GAMEBOARD_TEXTURE)) == NULL)
+	{
+		SDL_Log("Couldn't create.load texture: %s", SDL_GetError());
+		return FALSE;
+	}
 
 	if ((GIptr->GI_EndOfGameTexture = TEXTURE_Load(GIptr, ENDSCREEN_TEXTURE)) == NULL)
 	{

@@ -21,6 +21,47 @@ typedef struct _PLAYER_INFO PLAYER_INFO, *PPLAYER_INFO, **PPPLAYER_INFO;
 #define SZ_PLAYER_INFO sizeof(_PLAYER_INFO)
 #define PLAYER_INFO_NULL (PPLAYER_INFO)0
 
+typedef struct _DICE_INFO DICE_INFO, *PDICE_INFO, **PPDICE_INFO;
+#define SZ_DICE_INFO sizeof(_DICE_INFO)
+#define DICE_INFO_NULL (PDICE_INFO)0
+
+typedef struct _ROLL_INFO ROLL_INFO, *PROLL_INFO, **PPROLL_INFO;
+#define SZ_ROLL_INFO sizeof(_ROLL_INFO)
+#define ROLL_INFO_NULL (PROLL_INFO)0
+
+typedef struct _GAMEBOARD_INFO GAMEBOARD_INFO, *PGAMEBOARD_INFO, **PPGAMEBOARD_INFO;
+#define SZ_GAMEBOARD_INFO sizeof(_GAMEBOARD_INFO)
+#define GAMEBOARD_INFO_NULL (PGAMEBOARD_INFO)0
+
+struct _DICE_INFO
+{
+	INT       DI_SaveIdent;
+	INT       DI_CurIdent;
+	INT       DI_Flag;
+	INT       DI_HoverFlag;
+	SDL_FRect DI_Pos;
+};
+
+struct _ROLL_INFO
+{
+	INT        RI_CurRoll;
+	DICE_INFO  RI_DiceRolls[3][5];
+	INT        RI_Flag;
+	PSDL_FRect RI_DiceSrce;
+	PSDL_FRect RI_DiceSrceHover;
+};
+
+struct _GAMEBOARD_INFO
+{
+	PSDL_FRect  GBI_NormalSrce;
+	PSDL_FRect  GBI_HiliteSrce;
+	SDL_FRect   GBI_Dest;
+	FLOAT       GBI_TextOffsetX;
+	FLOAT       GBI_TextOffsetY;
+	const char  GBI_Text[30];
+	INT         GBI_Score;
+	INT         GBI_Flag;
+};
 
 struct _PLAYER_INFO
 {
@@ -80,6 +121,8 @@ struct _GAME_INFO
 	PLAYER_INFO   GI_Player;
 	CHAR          GI_PlayerName[MAX_NAME_LENGTH + 1];
 	HI_SCORE      GI_HiScoreList[MAX_NAMES];
+
+	ROLL_INFO     GI_RollData;
 
 
 	PSDL_Texture  GI_MainTexture;

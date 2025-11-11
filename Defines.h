@@ -89,8 +89,17 @@ typedef Mix_Chunk *PMix_Chunk, **PPMix_Chunk;
 #define BUTTON_IDENT_NEXT      1115
 #define BUTTON_IDENT_NONE      1100
 
+#define GAMEBOARD_FLAG_HOVER_ON     4000
+#define GAMEBOARD_FLAG_HOVER_OFF    4001
+
+#define DICE_NO_FLAG                3000
+#define DICE_NO_IDENT               3001
+
+#define MAX_DICE                    5
+
 
 #define BACKGROUND_TEXTURE   "Resources//Background Texture.png"
+#define GAMEBOARD_TEXTURE    "Resources//Game Board Texture.png"
 #define RULESSCREEN_TEXTURE  "Resources//RulesScreen.png"
 #define STARTSCREEN_TEXTURE  "Resources//StartofGameScreen.png"
 #define ENDSCREEN_TEXTURE    "Resources//EndOfGameScreen.png"

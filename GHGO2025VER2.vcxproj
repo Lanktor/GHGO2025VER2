@@ -133,7 +133,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Button Handler.cpp" />
+    <ClCompile Include="Dice Handler.cpp" />
     <ClCompile Include="End of Game Handler.cpp" />
+    <ClCompile Include="Game Board Handler.cpp" />
     <ClCompile Include="Game Loop.cpp" />
     <ClCompile Include="Initialize Application.cpp" />
     <ClCompile Include="Main Application.cpp" />
@@ -144,6 +146,7 @@
     <ClCompile Include="Test Stuff.cpp" />
     <ClCompile Include="Text Handler.cpp" />
     <ClCompile Include="Texture Handler.cpp" />
+    <ClCompile Include="Utilities.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Defines.h" />
