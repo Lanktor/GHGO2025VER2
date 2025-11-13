@@ -136,6 +136,11 @@ INT TEXT_CalculateCenterText(PGAME_INFO GIptr, const char *Text, INT Scale, INT 
 			Value -= 65;
 			TIptr = &UCFont[Value];
 		}
+		else if ((Value >= 97) && (Value <= 122))
+		{
+			Value -= 97;
+			TIptr = &LCFont[Value];
+		}
 		else
 		{
 			if (Value == 45) //Minus Sign

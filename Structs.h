@@ -44,8 +44,9 @@ struct _DICE_INFO
 
 struct _ROLL_INFO
 {
+	INT        RI_RipTidesRemaining;
 	INT        RI_CurRoll;
-	DICE_INFO  RI_DiceRolls[3][5];
+	DICE_INFO  RI_DiceRolls[MAX_ROLLS][MAX_DICE];
 	INT        RI_Flag;
 	PSDL_FRect RI_DiceSrce;
 	PSDL_FRect RI_DiceSrceHover;

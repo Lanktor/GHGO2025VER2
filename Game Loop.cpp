@@ -17,7 +17,7 @@ INT GameLoop(PGAME_INFO GIptr)
 	INT                I, ButtonIdent;
 	SDL_Event          Event;
 	SDL_FRect          Srce, Dest;
-	extern BUTTON_INFO MainButtons[];
+	extern BUTTON_INFO GameLoopButtons[];
 
 	GIptr->GI_TARGET_FPS = 80;
 	GIptr->GI_FRAME_DELAY = 1000 / GIptr->GI_TARGET_FPS;
@@ -63,7 +63,10 @@ INT GameLoop(PGAME_INFO GIptr)
 			case SDL_EVENT_MOUSE_BUTTON_DOWN:
 				if (Event.button.button == SDL_BUTTON_LEFT)
 				{
-					GIptr->GI_MouseDownFlag = TRUE;
+					ButtonIdent = BUTTON_ProcessClick(GIptr, GameLoopButtons);
+					if (ButtonIdent == BUTTON_IDENT_EXIT) EndOfGameHandler(GIptr);
+					if (ButtonIdent == BUTTON_IDENT_ROLL) DICE_ProcessRoll(GIptr);
+
 					GAMEBOARD_ProcessMouseClick(GIptr);
 					printf("MX = [%.02f] MY = [%.02f]\n", GIptr->GI_MouseX, GIptr->GI_MouseY);
 				}
@@ -109,9 +112,11 @@ INT GameLoop(PGAME_INFO GIptr)
 		SDL_RenderClear(GIptr->GI_MainRenderer);
 
 		SDL_RenderTexture(GIptr->GI_MainRenderer, GIptr->GI_BackgroundTexture, NULL, NULL);
-		BUTTON_Update(GIptr, MainButtons, 212, 424);
-		BUTTON_IsButtonHover(GIptr, MainButtons);
-		//		TEST_Render(GIptr);
+		BUTTON_Update(GIptr, GameLoopButtons, 212, 424);
+		BUTTON_IsButtonHover(GIptr, GameLoopButtons);
+
+		TEST_Render(GIptr); // Test Stuff
+
 		GAMEBOARD_Render(GIptr);
 		DICE_Render(GIptr);
 

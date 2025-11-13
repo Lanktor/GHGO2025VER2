@@ -93,7 +93,7 @@ INT BUTTON_ProcessClick(PGAME_INFO GIptr, PBUTTON_INFO BIptr)
 
 			switch (BIptr->BI_Ident)
 			{
-			case BUTTON_IDENT_PLAY:
+				case BUTTON_IDENT_PLAY:
 				Ident = BUTTON_IDENT_PLAY;
 				break;
 
@@ -113,7 +113,8 @@ INT BUTTON_ProcessClick(PGAME_INFO GIptr, PBUTTON_INFO BIptr)
 				break;
 
 			case BUTTON_IDENT_ROLL:
-				break;
+				Ident = BUTTON_IDENT_ROLL;
+			break;
 
 			case BUTTON_IDENT_HINT:
 				Ident = BUTTON_IDENT_HINT;

@@ -34,12 +34,36 @@ INT DICE_Render(PGAME_INFO GIptr)
 	return(TRUE);
 }
 
+INT DICE_ProcessRoll(PGAME_INFO GIptr)
+{
+	INT        I;
+	PROLL_INFO RIptr;
+	PDICE_INFO CurDIptr, NextDIptr;
+
+	RIptr = &GIptr->GI_RollData;
+
+	if((RIptr->RI_CurRoll + 1) >= MAX_ROLLS) return(FALSE);
+
+	// We are saving all the roll data here, just not sure why Only grabbing the actual roll data
+	CurDIptr = RIptr->RI_DiceRolls[RIptr->RI_CurRoll];
+	NextDIptr = RIptr->RI_DiceRolls[RIptr->RI_CurRoll + 1];
+	for(I = 0; I < MAX_DICE; I++, CurDIptr++, NextDIptr++)
+	{
+		NextDIptr->DI_CurIdent = CurDIptr->DI_CurIdent;
+		NextDIptr->DI_SaveIdent = CurDIptr->DI_SaveIdent;
+	}
+
+	RIptr->RI_CurRoll++;
+	DICE_Roll(GIptr, RIptr->RI_DiceRolls[RIptr->RI_CurRoll]);
+	return(TRUE);
+}
+
 INT DICE_Roll(PGAME_INFO GIptr, PDICE_INFO DIptr)
 {
 	INT I;
 	for (I = 0; I < MAX_DICE; I++, DIptr++)
 	{
-		if(DIptr->DI_CurIdent = DICE_NO_IDENT)
+		if(DIptr->DI_CurIdent == DICE_NO_IDENT)
 		{
 			DIptr->DI_CurIdent = UTIL_RandomIntRange(&GIptr->GI_RNGState, 0, 5);
 		}
@@ -60,11 +84,12 @@ INT DICE_Initiate(PGAME_INFO GIptr)
 
 	RIptr->RI_CurRoll = 0;
 	RIptr->RI_Flag = 0;
+	RIptr->RI_RipTidesRemaining = MAX_RIPTIDES;
 
 	RIptr->RI_DiceSrce = GameDiceSrce;
 	RIptr->RI_DiceSrceHover = GameDiceHover;
 
-	for(I = 0; I < 3; I++)
+	for(I = 0; I < MAX_ROLLS; I++)
 	{
 		Dest.x = 610;
 		Dest.y = 880;
@@ -107,6 +132,8 @@ INT DICE_ProcessPick(PGAME_INFO GIptr, PSDL_FRect Mptr)
 	PDICE_INFO DIptr;
 
 	RIptr = &GIptr->GI_RollData;
+
+printf("Current Roll [%d]\n", RIptr->RI_CurRoll);
 	DIptr = RIptr->RI_DiceRolls[RIptr->RI_CurRoll];
 
 	for (Die = 0; Die < MAX_DICE; Die++, DIptr++)

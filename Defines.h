@@ -99,6 +99,8 @@ typedef Mix_Chunk *PMix_Chunk, **PPMix_Chunk;
 #define DICE_NO_IDENT               3001
 
 #define MAX_DICE                    5
+#define MAX_RIPTIDES                3
+#define MAX_ROLLS                   3
 
 
 #define BACKGROUND_TEXTURE   "Resources//Background Texture.png"

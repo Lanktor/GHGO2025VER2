@@ -65,6 +65,7 @@ INT StartOfGameHandler(PGAME_INFO GIptr)
 					{
 						DICE_Initiate(GIptr);
 						DICE_Roll(GIptr, GIptr->GI_RollData.RI_DiceRolls[GIptr->GI_RollData.RI_CurRoll]);
+						GIptr->GI_CurrentScore = 0;
 						Quit = TRUE;
 					}
 				}
