@@ -114,7 +114,11 @@ INT BUTTON_ProcessClick(PGAME_INFO GIptr, PBUTTON_INFO BIptr)
 
 			case BUTTON_IDENT_ROLL:
 				Ident = BUTTON_IDENT_ROLL;
-			break;
+				break;
+
+			case BUTTON_IDENT_RIPTIDE:
+				Ident = BUTTON_IDENT_RIPTIDE;
+				break;
 
 			case BUTTON_IDENT_HINT:
 				Ident = BUTTON_IDENT_HINT;

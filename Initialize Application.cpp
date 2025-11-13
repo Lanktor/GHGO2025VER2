@@ -11,6 +11,12 @@ INT InitializeApplication(PGAME_INFO GIptr)
 {
 	INT                    I;
 	const SDL_DisplayMode *Disp;
+	extern GAMEBOARD_INFO ScoreCategory[];
+	extern GAMEBOARD_INFO ScoreColumn1[];
+	extern GAMEBOARD_INFO ScoreColumn2[];
+	extern GAMEBOARD_INFO ScoreColumn3[];
+	extern GAMEBOARD_INFO ScoreColumn4[];
+	extern GAMEBOARD_INFO ScoreColumn5[];
 
 	SDL_srand(time(NULL));
 	memset(GIptr, 0, SZ_GAME_INFO);
@@ -97,6 +103,13 @@ INT InitializeApplication(PGAME_INFO GIptr)
 		printf("***** Music Load FAILED *****\nSDL could not Load Music! SDL Error: %s", SDL_GetError());
 		return(FALSE);
 	}
+
+	GIptr->GI_ScoreCategory = ScoreCategory;
+	GIptr->GI_ScoreColumns[0] = ScoreColumn1;
+	GIptr->GI_ScoreColumns[1] = ScoreColumn2;
+	GIptr->GI_ScoreColumns[2] = ScoreColumn3;
+	GIptr->GI_ScoreColumns[3] = ScoreColumn4;
+	GIptr->GI_ScoreColumns[4] = ScoreColumn5;
 
 	return(TRUE);
 }

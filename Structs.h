@@ -125,6 +125,8 @@ struct _GAME_INFO
 
 	ROLL_INFO     GI_RollData;
 
+	PGAMEBOARD_INFO GI_ScoreColumns[5];
+	PGAMEBOARD_INFO GI_ScoreCategory;
 
 	PSDL_Texture  GI_MainTexture;
 	PSDL_Texture  GI_TextTexture;

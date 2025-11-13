@@ -34,6 +34,41 @@ INT DICE_Render(PGAME_INFO GIptr)
 	return(TRUE);
 }
 
+INT DICE_ProcessRiptide(PGAME_INFO GIptr)
+{
+	INT        I;
+	PROLL_INFO RIptr;
+	PDICE_INFO DIptr;
+
+	RIptr = &GIptr->GI_RollData;
+
+	if(RIptr->RI_RipTidesRemaining <= 0) return(FALSE);
+	RIptr->RI_RipTidesRemaining--;
+
+	DICE_InitiateTurn(GIptr);
+
+	return(TRUE);
+}
+
+INT DICE_InitiateTurn(PGAME_INFO GIptr)
+{
+	INT        I;
+	PROLL_INFO RIptr;
+	PDICE_INFO DIptr;
+
+	RIptr = &GIptr->GI_RollData;
+	RIptr->RI_CurRoll = 0;
+
+	for (I = 0; I < MAX_ROLLS; I++)
+	{
+		DIptr = RIptr->RI_DiceRolls[I];
+		DICE_Clear(GIptr, DIptr);
+	}
+
+	DICE_Roll(GIptr, RIptr->RI_DiceRolls[RIptr->RI_CurRoll]);
+	return(TRUE);
+}
+
 INT DICE_ProcessRoll(PGAME_INFO GIptr)
 {
 	INT        I;
@@ -116,11 +151,12 @@ INT DICE_Clear(PGAME_INFO GIptr, PDICE_INFO DIptr)
 {
 	INT I;
 
-	for(I = 0; I < 5; I++)
+	for(I = 0; I < 5; I++, DIptr++)
 	{
 		DIptr->DI_Flag = DICE_NO_FLAG;
 		DIptr->DI_SaveIdent = DICE_NO_IDENT;
 		DIptr->DI_CurIdent = DICE_NO_IDENT;
+		DIptr->DI_HoverFlag = GAMEBOARD_FLAG_HOVER_OFF;
 	}
 	return(TRUE);
 }

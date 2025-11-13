@@ -140,6 +140,7 @@
     <ClCompile Include="Initialize Application.cpp" />
     <ClCompile Include="Main Application.cpp" />
     <ClCompile Include="Rules Handler.cpp" />
+    <ClCompile Include="Score Handler.cpp" />
     <ClCompile Include="Start of Game Handler.cpp" />
     <ClCompile Include="Tables.cpp" />
     <ClCompile Include="Terminate Application.cpp" />

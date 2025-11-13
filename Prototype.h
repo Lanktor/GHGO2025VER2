@@ -11,7 +11,9 @@ PSDL_Texture TEXTURE_Load(PGAME_INFO GIptr, PCCHAR FName);
 
 INT DICE_Clear(PGAME_INFO GIptr, PDICE_INFO DIptr);
 INT DICE_Initiate(PGAME_INFO GIptr);
+INT DICE_InitiateTurn(PGAME_INFO GIptr);
 INT DICE_ProcessPick(PGAME_INFO GIptr, PSDL_FRect Mptr);
+INT DICE_ProcessRiptide(PGAME_INFO GIptr);
 INT DICE_ProcessRoll(PGAME_INFO GIptr);
 INT DICE_Render(PGAME_INFO GIptr);
 INT DICE_Roll(PGAME_INFO GIptr, PDICE_INFO DIptr);
@@ -40,3 +42,6 @@ INT   UTIL_DrawCollisionBox(PGAME_INFO GIptr, PSDL_FRect SrceBox, SDL_Color Colo
 FLOAT UTIL_RadiansToDegrees(FLOAT Radians);
 FLOAT UTIL_RandomFloatRange(FLOAT Min, FLOAT Max);
 INT   UTIL_RandomIntRange(PUINT State, INT Min, INT Max);
+
+INT SCORE_GetRowCol(PGAME_INFO GIptr, PINT Row, PINT Col);
+INT SCORE_ProcessUpper(PGAME_INFO GIptr);
