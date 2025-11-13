@@ -11,12 +11,13 @@ INT CheckForLevelCompletion(PGAME_INFO GIptr);
 
 INT GameLoop(PGAME_INFO GIptr)
 {
-	const  BOOL *KeyState;
-	CHAR         Text[1024];
-	INT          Quit, Keys, TestCounter, RetVal;
-	INT          I, ButtonIdent;
-	SDL_Event    Event;
-	SDL_FRect    Srce, Dest;
+	const  BOOL       *KeyState;
+	CHAR               Text[1024];
+	INT                Quit, Keys, TestCounter, RetVal;
+	INT                I, ButtonIdent;
+	SDL_Event          Event;
+	SDL_FRect          Srce, Dest;
+	extern BUTTON_INFO MainButtons[];
 
 	GIptr->GI_TARGET_FPS = 80;
 	GIptr->GI_FRAME_DELAY = 1000 / GIptr->GI_TARGET_FPS;
@@ -108,7 +109,9 @@ INT GameLoop(PGAME_INFO GIptr)
 		SDL_RenderClear(GIptr->GI_MainRenderer);
 
 		SDL_RenderTexture(GIptr->GI_MainRenderer, GIptr->GI_BackgroundTexture, NULL, NULL);
-//		TEST_Render(GIptr);
+		BUTTON_Update(GIptr, MainButtons, 212, 424);
+		BUTTON_IsButtonHover(GIptr, MainButtons);
+		//		TEST_Render(GIptr);
 		GAMEBOARD_Render(GIptr);
 		DICE_Render(GIptr);
 

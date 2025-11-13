@@ -76,6 +76,8 @@ INT DICE_Initiate(PGAME_INFO GIptr)
 		{
 			DIptr->DI_HoverFlag = GAMEBOARD_FLAG_HOVER_OFF;
 			DIptr->DI_Flag = DICE_NO_FLAG;
+			DIptr->DI_CurIdent = DICE_NO_IDENT;
+			DIptr->DI_SaveIdent = DICE_NO_IDENT;
 			DIptr->DI_Pos.x = Dest.x;
 			DIptr->DI_Pos.y = Dest.y;
 			DIptr->DI_Pos.w = Dest.w;
@@ -117,6 +119,16 @@ INT DICE_ProcessPick(PGAME_INFO GIptr, PSDL_FRect Mptr)
 
 	if(Die == MAX_DICE) return(FALSE);
 
-printf("DIE = [%d]\n", Die);
+	if(DIptr->DI_CurIdent != DICE_NO_IDENT)
+	{
+		DIptr->DI_SaveIdent = DIptr->DI_CurIdent;
+		DIptr->DI_CurIdent = DICE_NO_IDENT;
+	}
+	else
+	{
+		DIptr->DI_CurIdent = DIptr->DI_SaveIdent;
+		DIptr->DI_SaveIdent = DICE_NO_IDENT;
+	}
+
 	return(TRUE);
 }

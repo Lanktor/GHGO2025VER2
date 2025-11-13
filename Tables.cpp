@@ -7,6 +7,15 @@
 GAME_INFO Gamebuffer;
 PGAME_INFO Gameptr = &Gamebuffer;
 
+BUTTON_INFO MainButtons[] =
+{
+	{BUTTON_IDENT_ROLL,    BUTTON_STATE_UP,  68, 18,    0, 750, 211,  61,   1340,  900, 211,  61, "ROLL"},
+	{BUTTON_IDENT_RIPTIDE, BUTTON_STATE_UP,  44, 18,    0, 750, 211,  61,   1340,  970, 211,  61, "RIP TIDE"},
+	{BUTTON_IDENT_SAVE,    BUTTON_STATE_UP,  16, 18,    0, 750, 211,  61,     130,  900, 211,  61, "SAVE GAME"},
+	{BUTTON_IDENT_EXIT,    BUTTON_STATE_UP,  68, 18,    0, 750, 211,  61,     130,  970, 211,  61, "EXIT"},
+	{-1,  -1,   -1, -1, -1,  -1, -1, -1, -1,  -1},
+};
+
 BUTTON_INFO RulesButtons[] =
 {
 	{BUTTON_IDENT_CONTINUE, BUTTON_STATE_UP,   48, 18, 0, 750, 211,  61,    30,   40, 211,  61, "RETURN"},

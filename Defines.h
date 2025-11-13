@@ -84,9 +84,12 @@ typedef Mix_Chunk *PMix_Chunk, **PPMix_Chunk;
 #define BUTTON_IDENT_PLAY      1010
 #define BUTTON_IDENT_SKIP      1011
 #define BUTTON_IDENT_RULES     1012
-#define BUTTON_IDENT_HISCORE   1113
-#define BUTTON_IDENT_REPLAY    1114
-#define BUTTON_IDENT_NEXT      1115
+#define BUTTON_IDENT_HISCORE   1013
+#define BUTTON_IDENT_REPLAY    1014
+#define BUTTON_IDENT_NEXT      1015
+#define BUTTON_IDENT_RIPTIDE   1016
+#define BUTTON_IDENT_SAVE      1017
+#define BUTTON_IDENT_LOAD      1018
 #define BUTTON_IDENT_NONE      1100
 
 #define GAMEBOARD_FLAG_HOVER_ON     4000
@@ -106,7 +109,7 @@ typedef Mix_Chunk *PMix_Chunk, **PPMix_Chunk;
 #define PLAYER_TEXTURE       "Resources//Player TileSheet.png"
 #define TEXT_TEXTURE         "Resources//Text Sprites.png"
 #define MAIN_TEXTURE         "Resources//Main Tile Sheet.png"
-#define BACKGROUND_MUSIC     "Resources//Sunguard.mp3"
+#define BACKGROUND_MUSIC     "Resources//Neverland.mp3"
 #define HI_SCORE_FILE        "Resources//HiScore.txt"
 
 
