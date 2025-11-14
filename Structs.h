@@ -60,8 +60,9 @@ struct _GAMEBOARD_INFO
 	FLOAT       GBI_TextOffsetX;
 	FLOAT       GBI_TextOffsetY;
 	const char  GBI_Text[30];
-	INT         GBI_Score;
 	INT         GBI_Flag;
+	INT         GBI_Score;
+	INT         GBI_ScoredFlag;
 };
 
 struct _PLAYER_INFO

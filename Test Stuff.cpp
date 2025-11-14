@@ -12,18 +12,18 @@ SDL_FRect DisplayScoreTable[] =
 	{640, 750,  60,  60 }, // Dark Button Icon
 };
 
+INT DisplayRoll[] = {2, 1, 0};
+
 
 INT TEST_Render(PGAME_INFO GIptr)
 {
 	CHAR       Text[1024];
-	INT        I, J, Y;
+	INT        I, J, Y, RollDisplay;
 	SDL_FRect  Dest, Rect;
 	SDL_Color  Color = {8, 40, 40, 255};
 	PROLL_INFO RIptr;
 
 	RIptr = &GIptr->GI_RollData;
-
-	GIptr->GI_CurrentScore++;
 
 	// Score Display
 	Dest.x = 1520;
@@ -58,7 +58,7 @@ INT TEST_Render(PGAME_INFO GIptr)
 	Dest.w = 60;
 	Dest.h = 60;
 	SDL_RenderTexture(GIptr->GI_MainRenderer, GIptr->GI_MainTexture, &DisplayScoreTable[1], &Dest);
-	sprintf_s(Text, sizeof(Text), "%d", RIptr->RI_CurRoll + 1);
+	sprintf_s(Text, sizeof(Text), "%d", DisplayRoll[RIptr->RI_CurRoll]);
 	Dest.x = TEXT_CalculateCenterText(GIptr, Text, 2, 60);
 	Dest.x += 1560;
 	Dest.y += 5;
@@ -76,3 +76,31 @@ INT TEST_Render(PGAME_INFO GIptr)
 
 	return(TRUE);
 }
+
+INT TEST_SwellsLogic(PINT Seen, INT *SmallStraightFlag, INT *LargeStraightFlag)
+{
+	INT Mask, I, Counter;
+
+	Mask = Counter = 0;
+	*SmallStraightFlag = FALSE;
+	*LargeStraightFlag = FALSE;
+
+	for (I = 0; I < 6; I++) 
+	{
+		Mask |= (1 << I);
+		if (Seen[I])
+		{
+			Counter++;
+			if (Counter == 5) *LargeStraightFlag = TRUE;
+			if (Counter == 4) *SmallStraightFlag = TRUE;
+		}
+		else 
+		{
+			Counter = 0;
+		}
+	}
+
+	return(Mask);
+
+}
+

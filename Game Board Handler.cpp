@@ -87,7 +87,7 @@ INT GAMEBOARD_Render(PGAME_INFO GIptr)
 		TEXT_WriteText(GIptr, Color, &TextDest, GBIptr->GBI_Text, 1);
 	}
 
-	for(I = 0; I < 5; I++)
+	for(I = 0; I < GAMEBOARD_CONST_MAX_COLUMNS; I++)
 	{
 		GBIptr = GIptr->GI_ScoreColumns[I];
 
@@ -96,6 +96,7 @@ INT GAMEBOARD_Render(PGAME_INFO GIptr)
 			Srceptr = (GBIptr->GBI_Flag == GAMEBOARD_FLAG_HOVER_OFF) ? GBIptr->GBI_NormalSrce : GBIptr->GBI_HiliteSrce;
 
 			SDL_RenderTexture(GIptr->GI_MainRenderer, GIptr->GI_GameBoardTexture, Srceptr, &GBIptr->GBI_Dest);
+
 			TextDest.x = GBIptr->GBI_Dest.x + GBIptr->GBI_TextOffsetX;
 			TextDest.y = GBIptr->GBI_Dest.y + GBIptr->GBI_TextOffsetY;
 			TEXT_WriteText(GIptr, Color, &TextDest, GBIptr->GBI_Text, 1);

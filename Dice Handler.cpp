@@ -169,7 +169,6 @@ INT DICE_ProcessPick(PGAME_INFO GIptr, PSDL_FRect Mptr)
 
 	RIptr = &GIptr->GI_RollData;
 
-printf("Current Roll [%d]\n", RIptr->RI_CurRoll);
 	DIptr = RIptr->RI_DiceRolls[RIptr->RI_CurRoll];
 
 	for (Die = 0; Die < MAX_DICE; Die++, DIptr++)

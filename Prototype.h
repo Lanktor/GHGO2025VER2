@@ -35,6 +35,7 @@ INT TEXT_WriteText(PGAME_INFO GIptr, SDL_Color Color, PSDL_FRect Dest, const cha
 INT TEXT_WriteTextRaised(PGAME_INFO GIptr, SDL_Color TopColor, SDL_Color BotColor, PSDL_FRect Dest, const char *Text, INT Scale, INT Offset);
 
 INT TEST_Render(PGAME_INFO GIptr);
+INT TEST_SwellsLogic(PINT Seen);
 
 INT   UTIL_CheckInsideCircle(PGAME_INFO GIptr, PSDL_FRect Objptr, FLOAT CX, FLOAT CY, FLOAT Rad);
 FLOAT UTIL_DegreesToRadians(FLOAT Degrees);
@@ -43,5 +44,8 @@ FLOAT UTIL_RadiansToDegrees(FLOAT Radians);
 FLOAT UTIL_RandomFloatRange(FLOAT Min, FLOAT Max);
 INT   UTIL_RandomIntRange(PUINT State, INT Min, INT Max);
 
+INT SCORE_DiceData(PGAME_INFO GIptr, INT Row, INT Col);
 INT SCORE_GetRowCol(PGAME_INFO GIptr, PINT Row, PINT Col);
 INT SCORE_ProcessUpper(PGAME_INFO GIptr);
+INT SCORE_FullHouse(PGAME_INFO GIptr, INT Row, INT Col);
+INT SCORE_TwoPair(PGAME_INFO GIptr, INT Row, INT Col);

@@ -92,8 +92,13 @@ typedef Mix_Chunk *PMix_Chunk, **PPMix_Chunk;
 #define BUTTON_IDENT_LOAD      1018
 #define BUTTON_IDENT_NONE      1100
 
-#define GAMEBOARD_FLAG_HOVER_ON     4000
-#define GAMEBOARD_FLAG_HOVER_OFF    4001
+#define GAMEBOARD_FLAG_HOVER_ON          4000
+#define GAMEBOARD_FLAG_HOVER_OFF         4001
+#define GAMEBOARD_FLAG_DISPLAY_SCORE_OFF 4002
+#define GAMEBOARD_FLAG_DISPLAY_SCORE_ON  4003
+
+
+#define GAMEBOARD_CONST_MAX_COLUMNS         5
 
 #define DICE_NO_FLAG                3000
 #define DICE_NO_IDENT               3001
@@ -102,6 +107,8 @@ typedef Mix_Chunk *PMix_Chunk, **PPMix_Chunk;
 #define MAX_RIPTIDES                3
 #define MAX_ROLLS                   3
 
+#define SCORE_TWOPAIR               40
+#define SCORE_FULLHOUSE             50
 
 #define BACKGROUND_TEXTURE   "Resources//Background Texture.png"
 #define GAMEBOARD_TEXTURE    "Resources//Game Board Texture.png"
