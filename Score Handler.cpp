@@ -25,6 +25,8 @@ INT SCORE_ProcessUpper(PGAME_INFO GIptr)
 	SCORE_GetRowCol(GIptr, &Row, &Col);
 	if(GIptr->GI_ScoreColumns[Col][Row].GBI_ScoredFlag == TRUE) return(FALSE);
 	Score = 0;
+
+GIptr->GI_EOGTestHandler++; // End of Game Artificial Game Ending
 	switch (Row)
 	{
 		case 1:

@@ -114,6 +114,8 @@ struct _GAME_INFO
 	INT           GI_MouseDownFlag;
 	INT           GI_MouseUpFlag;
 
+	INT           GI_EOGTestHandler;
+
 	PSDL_FRect    GI_StarField;
 
 	PSDL_Window   GI_MainWindow;

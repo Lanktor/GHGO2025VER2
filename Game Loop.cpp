@@ -21,7 +21,7 @@ INT GameLoop(PGAME_INFO GIptr)
 
 	GIptr->GI_SecondsCounter = GIptr->GI_PrevTime = SDL_GetTicks();
 	GIptr->GI_FrameCounter = 0;
-
+	GIptr->GI_EOGTestHandler = 0;
 
 	KeyState = SDL_GetKeyboardState(NULL);
 	TestCounter = 0;
@@ -121,6 +121,11 @@ INT GameLoop(PGAME_INFO GIptr)
 
 		SDL_RenderPresent(GIptr->GI_MainRenderer);
 
+		if((CheckForGameCompleted(GIptr)) == GAME_COMPLETED)
+		{
+			EndOfGameHandler(GIptr);
+		}
+
 		GIptr->GI_FrameTime = SDL_GetTicks() - GIptr->GI_FrameStart;
 
 		if (GIptr->GI_FrameTime < GIptr->GI_FRAME_DELAY) SDL_Delay(GIptr->GI_FRAME_DELAY - GIptr->GI_FrameTime);
@@ -139,9 +144,11 @@ INT GameLoop(PGAME_INFO GIptr)
 
 INT CheckForGameCompleted(PGAME_INFO GIptr)
 {
+	INT Row, Col;
 	PGAMEBOARD_INFO GBIptr;
 
-	INT Row, Col;
+	if (GIptr->GI_EOGTestHandler >= 10) return(GAME_COMPLETED);
+
 	for (Col = 0; Col < 5; Col++)
 	{
 		GBIptr = GIptr->GI_ScoreColumns[Col];
@@ -150,5 +157,6 @@ INT CheckForGameCompleted(PGAME_INFO GIptr)
 			if(GBIptr->GBI_ScoredFlag == FALSE) return(GAME_NOT_COMPLETED);
 		}
 	}
+
 	return(GAME_COMPLETED);
 }
