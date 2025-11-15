@@ -41,6 +41,7 @@ INT SCORE_ProcessUpper(PGAME_INFO GIptr)
 
 		// Seaweed - Chance 
 		case 8:
+			SCORE_Chance(GIptr, Row, Col);
 		break;
 
 		// Breaker - Full House
@@ -50,10 +51,12 @@ INT SCORE_ProcessUpper(PGAME_INFO GIptr)
 
 		// High Tide 4 of a kind
 		case 10:
+			SCORE_FourOfAKind(GIptr, Row, Col);
 		break;
 
 		// Tidal Wave -- Yahtzee
 		case 11:
+			SCORE_FiveOfAKind(GIptr, Row, Col);
 		break;
 
 		default:
@@ -160,7 +163,7 @@ INT SCORE_FullHouse(PGAME_INFO GIptr, INT Row, INT Col)
 		sprintf_s((PCHAR)GIptr->GI_ScoreColumns[Col][Row].GBI_Text, 30, "%d", Score);
 		DICE_InitiateTurn(GIptr);
 	}
-	return(TRUE);
+	return(Score);
 }
 
 INT SCORE_TwoPair(PGAME_INFO GIptr, INT Row, INT Col)
@@ -196,12 +199,92 @@ INT SCORE_TwoPair(PGAME_INFO GIptr, INT Row, INT Col)
 		sprintf_s((PCHAR)GIptr->GI_ScoreColumns[Col][Row].GBI_Text, 30, "%d", Score);
 		DICE_InitiateTurn(GIptr);
 	}
-	return(TRUE);
+	return(Score);
 }
 
+INT SCORE_Chance(PGAME_INFO GIptr, INT Row, INT Col)
+{
+	INT Score;
+
+	Score = (SCORE_CHANCE * (Col + 1));
+	GIptr->GI_ScoreColumns[Col][Row].GBI_Score = Score;
+	GIptr->GI_ScoreColumns[Col][Row].GBI_ScoredFlag = TRUE;
+	GIptr->GI_CurrentScore += Score;
+	sprintf_s((PCHAR)GIptr->GI_ScoreColumns[Col][Row].GBI_Text, 30, "%d", Score);
+	DICE_InitiateTurn(GIptr);
+
+	return(Score);
+}
+
+INT SCORE_FourOfAKind(PGAME_INFO GIptr, INT Row, INT Col)
+{
+	INT        I, Score, FourCount;
+	INT        Count[6] = { 0 };
+	PROLL_INFO RIptr;
+	PDICE_INFO DIptr;
+
+	RIptr = &GIptr->GI_RollData;
+	DIptr = RIptr->RI_DiceRolls[RIptr->RI_CurRoll];
 
 
+	for (I = 0; I < 5; I++, DIptr++)
+	{
+		if (DIptr->DI_CurIdent == DICE_NO_IDENT) continue;
+		Count[DIptr->DI_CurIdent]++;
+	}
 
+	FourCount = 0;
+	for (I = 0; I < 6; I++)
+	{
+		if (Count[I] == 4) FourCount++;
+	}
+
+	if (FourCount == 1)
+	{
+		Score = (SCORE_FOUROFAKIND * (Col + 1));
+		GIptr->GI_ScoreColumns[Col][Row].GBI_Score = Score;
+		GIptr->GI_ScoreColumns[Col][Row].GBI_ScoredFlag = TRUE;
+		GIptr->GI_CurrentScore += Score;
+		sprintf_s((PCHAR)GIptr->GI_ScoreColumns[Col][Row].GBI_Text, 30, "%d", Score);
+		DICE_InitiateTurn(GIptr);
+	}
+	return(Score);
+}
+
+INT SCORE_FiveOfAKind(PGAME_INFO GIptr, INT Row, INT Col)
+{
+	INT        I, Score, FourCount;
+	INT        Count[6] = { 0 };
+	PROLL_INFO RIptr;
+	PDICE_INFO DIptr;
+
+	RIptr = &GIptr->GI_RollData;
+	DIptr = RIptr->RI_DiceRolls[RIptr->RI_CurRoll];
+
+
+	for (I = 0; I < 5; I++, DIptr++)
+	{
+		if (DIptr->DI_CurIdent == DICE_NO_IDENT) continue;
+		Count[DIptr->DI_CurIdent]++;
+	}
+
+	FourCount = 0;
+	for (I = 0; I < 6; I++)
+	{
+		if (Count[I] == 5) FourCount++;
+	}
+
+	if (FourCount == 1)
+	{
+		Score = (SCORE_FIVEOFAKIND * (Col + 1));
+		GIptr->GI_ScoreColumns[Col][Row].GBI_Score = Score;
+		GIptr->GI_ScoreColumns[Col][Row].GBI_ScoredFlag = TRUE;
+		GIptr->GI_CurrentScore += Score;
+		sprintf_s((PCHAR)GIptr->GI_ScoreColumns[Col][Row].GBI_Text, 30, "%d", Score);
+		DICE_InitiateTurn(GIptr);
+	}
+	return(Score);
+}
 
 
 

@@ -109,6 +109,9 @@ typedef Mix_Chunk *PMix_Chunk, **PPMix_Chunk;
 
 #define SCORE_TWOPAIR               40
 #define SCORE_FULLHOUSE             50
+#define SCORE_CHANCE                25
+#define SCORE_FOUROFAKIND           75
+#define SCORE_FIVEOFAKIND          100
 
 #define BACKGROUND_TEXTURE   "Resources//Background Texture.png"
 #define GAMEBOARD_TEXTURE    "Resources//Game Board Texture.png"

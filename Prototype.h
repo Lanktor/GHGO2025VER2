@@ -44,8 +44,11 @@ FLOAT UTIL_RadiansToDegrees(FLOAT Radians);
 FLOAT UTIL_RandomFloatRange(FLOAT Min, FLOAT Max);
 INT   UTIL_RandomIntRange(PUINT State, INT Min, INT Max);
 
+INT SCORE_Chance(PGAME_INFO GIptr, INT Row, INT Col);
 INT SCORE_DiceData(PGAME_INFO GIptr, INT Row, INT Col);
+INT SCORE_FiveOfAKind(PGAME_INFO GIptr, INT Row, INT Col);
+INT SCORE_FourOfAKind(PGAME_INFO GIptr, INT Row, INT Col);
+INT SCORE_FullHouse(PGAME_INFO GIptr, INT Row, INT Col);
 INT SCORE_GetRowCol(PGAME_INFO GIptr, PINT Row, PINT Col);
 INT SCORE_ProcessUpper(PGAME_INFO GIptr);
-INT SCORE_FullHouse(PGAME_INFO GIptr, INT Row, INT Col);
 INT SCORE_TwoPair(PGAME_INFO GIptr, INT Row, INT Col);
