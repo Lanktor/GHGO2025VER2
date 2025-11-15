@@ -44,6 +44,8 @@ typedef Mix_Chunk *PMix_Chunk, **PPMix_Chunk;
 #define LEVEL_IS_COMPLETE     5005
 #define NO_COLLISION_DETECTED 5006
 #define COLLISION_DETECTED    5007
+#define GAME_COMPLETED        5008
+#define GAME_NOT_COMPLETED    5009
 
 #define GAME_VERSION          200
 #define GAME_BASE_SCORE       5000

@@ -8,13 +8,12 @@
 
 INT SCORE_ProcessUpper(PGAME_INFO GIptr)
 {
-	INT        I, Row, Col;
+	INT        I, Row, Col, Score;
 	INT        Mask, LSFlag, SSFlag;
 	PDICE_INFO DIptr;
 	PROLL_INFO RIptr;
-
+/*
 	RIptr = &GIptr->GI_RollData;
-	SCORE_GetRowCol(GIptr, &Row, &Col);
 	DIptr = RIptr->RI_DiceRolls[RIptr->RI_CurRoll];
 	printf("Row [%d] Col [%d]\n", Row, Col);
 
@@ -22,7 +21,10 @@ INT SCORE_ProcessUpper(PGAME_INFO GIptr)
 	{
 		printf("Score Dice\n");
 	}
-
+*/
+	SCORE_GetRowCol(GIptr, &Row, &Col);
+	if(GIptr->GI_ScoreColumns[Col][Row].GBI_ScoredFlag == TRUE) return(FALSE);
+	Score = 0;
 	switch (Row)
 	{
 		case 1:
@@ -36,38 +38,50 @@ INT SCORE_ProcessUpper(PGAME_INFO GIptr)
 
 		// Ripples - Two Pair
 		case 7:
-			SCORE_TwoPair(GIptr, Row, Col);
+			if((VERIFY_TwoPair(GIptr)) == TRUE)
+			{
+				Score = (SCORE_TWOPAIR * (Col + 1));
+			}
+			SCORE_Cell(GIptr, Row, Col, Score);
 			break;
 
 		// Seaweed - Chance 
 		case 8:
-			SCORE_Chance(GIptr, Row, Col);
+			Score = (SCORE_CHANCE * (Col + 1));
+			SCORE_Cell(GIptr, Row, Col, Score);
 		break;
 
 		// Breaker - Full House
 		case 9:
-			SCORE_FullHouse(GIptr, Row, Col);
-		break;
+			if((VERIFY_FullHouse(GIptr)) == TRUE)
+			{
+				Score = (SCORE_FULLHOUSE * (Col + 1));
+			}
+			SCORE_Cell(GIptr, Row, Col, Score);
+			break;
 
 		// High Tide 4 of a kind
 		case 10:
-			SCORE_FourOfAKind(GIptr, Row, Col);
-		break;
+			if ((VERIFY_MatchedCount(GIptr, 4)) == TRUE)
+			{
+				Score = (SCORE_FOUROFAKIND * (Col + 1));
+			}
+			SCORE_Cell(GIptr, Row, Col, Score);
+			break;
 
 		// Tidal Wave -- Yahtzee
 		case 11:
-			SCORE_FiveOfAKind(GIptr, Row, Col);
+			if ((VERIFY_MatchedCount(GIptr, 5)) == TRUE)
+			{
+				Score = (SCORE_FIVEOFAKIND * (Col + 1));
+			}
+			SCORE_Cell(GIptr, Row, Col, Score);
 		break;
 
 		default:
 		break;
 	}
 
-
-	for (I = 0; I < MAX_DICE; I++, DIptr++)
-	{
-		printf("[%d] Ident = [%d]\n", I, DIptr->DI_CurIdent);
-	}
 	return(TRUE);
 }
 
@@ -98,6 +112,16 @@ INT SCORE_GetRowCol(PGAME_INFO GIptr, PINT Row, PINT Col)
 		}
 	}
 	return(FALSE);
+}
+
+INT SCORE_Cell(PGAME_INFO GIptr, INT Row, INT Col, INT Score)
+{
+	GIptr->GI_ScoreColumns[Col][Row].GBI_Score = Score;
+	GIptr->GI_ScoreColumns[Col][Row].GBI_ScoredFlag = TRUE;
+	GIptr->GI_CurrentScore += Score;
+	sprintf_s((PCHAR)GIptr->GI_ScoreColumns[Col][Row].GBI_Text, 30, "%d", Score);
+	DICE_InitiateTurn(GIptr);
+	return(TRUE);
 }
 
 INT SCORE_DiceData(PGAME_INFO GIptr, INT Row, INT Col)

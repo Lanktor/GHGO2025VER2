@@ -6,9 +6,6 @@
 #include <Structs.h>
 #include <Prototype.h>
 
-INT CheckForLevelCompletion(PGAME_INFO GIptr);
-
-
 INT GameLoop(PGAME_INFO GIptr)
 {
 	const  BOOL       *KeyState;
@@ -138,4 +135,20 @@ INT GameLoop(PGAME_INFO GIptr)
 
 	EndOfGameHandler(GIptr);
 	return(TRUE);
+}
+
+INT CheckForGameCompleted(PGAME_INFO GIptr)
+{
+	PGAMEBOARD_INFO GBIptr;
+
+	INT Row, Col;
+	for (Col = 0; Col < 5; Col++)
+	{
+		GBIptr = GIptr->GI_ScoreColumns[Col];
+		for (Row = 0; GBIptr->GBI_NormalSrce != NULL; GBIptr++, Row++)
+		{
+			if(GBIptr->GBI_ScoredFlag == FALSE) return(GAME_NOT_COMPLETED);
+		}
+	}
+	return(GAME_COMPLETED);
 }

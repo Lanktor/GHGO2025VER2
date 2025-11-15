@@ -1,5 +1,6 @@
 #pragma once
 
+INT CheckForGameCompleted(PGAME_INFO GIptr);
 INT EndOfGameHandler(PGAME_INFO GIptr);
 INT GameLoop(PGAME_INFO GIptr);
 INT InitializeApplication(PGAME_INFO GIptr);
@@ -44,6 +45,7 @@ FLOAT UTIL_RadiansToDegrees(FLOAT Radians);
 FLOAT UTIL_RandomFloatRange(FLOAT Min, FLOAT Max);
 INT   UTIL_RandomIntRange(PUINT State, INT Min, INT Max);
 
+INT SCORE_Cell(PGAME_INFO GIptr, INT Row, INT Col, INT Score);
 INT SCORE_Chance(PGAME_INFO GIptr, INT Row, INT Col);
 INT SCORE_DiceData(PGAME_INFO GIptr, INT Row, INT Col);
 INT SCORE_FiveOfAKind(PGAME_INFO GIptr, INT Row, INT Col);
@@ -52,3 +54,7 @@ INT SCORE_FullHouse(PGAME_INFO GIptr, INT Row, INT Col);
 INT SCORE_GetRowCol(PGAME_INFO GIptr, PINT Row, PINT Col);
 INT SCORE_ProcessUpper(PGAME_INFO GIptr);
 INT SCORE_TwoPair(PGAME_INFO GIptr, INT Row, INT Col);
+
+INT VERIFY_FullHouse(PGAME_INFO GIptr);
+INT VERIFY_MatchedCount(PGAME_INFO GIptr, INT MatchCount);
+INT VERIFY_TwoPair(PGAME_INFO GIptr);

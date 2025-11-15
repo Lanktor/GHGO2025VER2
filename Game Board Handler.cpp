@@ -71,17 +71,32 @@ INT GAMEBOARD_ProcessHover(PGAME_INFO GIptr)
 INT GAMEBOARD_Render(PGAME_INFO GIptr)
 {
 	CHAR            BonusText[20];
-	INT             I, TextXCenter;
+	INT             I, TextXCenter, RowCounter;
 	PGAMEBOARD_INFO GBIptr;
-	SDL_FRect       TextDest;
-	PSDL_FRect      Srceptr;
+	SDL_FRect       TextDest, IconDest;
+	PSDL_FRect      Srceptr, DiceSrceptr;
 	SDL_Color       Color = { 8, 40, 40, 255 };
+	PROLL_INFO      RIptr;
+	PDICE_INFO      DIptr;
 
-	for (GBIptr = GIptr->GI_ScoreCategory; GBIptr->GBI_NormalSrce != NULL; GBIptr++)
+	RIptr = &GIptr->GI_RollData;
+	DiceSrceptr = RIptr->RI_DiceSrce;
+
+	for (RowCounter = 0, GBIptr = GIptr->GI_ScoreCategory; GBIptr->GBI_NormalSrce != NULL; GBIptr++, RowCounter++)
 	{
 		Srceptr = (GBIptr->GBI_Flag == GAMEBOARD_FLAG_HOVER_OFF) ? GBIptr->GBI_NormalSrce : GBIptr->GBI_HiliteSrce;
 
 		SDL_RenderTexture(GIptr->GI_MainRenderer, GIptr->GI_GameBoardTexture, Srceptr, &GBIptr->GBI_Dest);
+
+		if((RowCounter >= 1) && (RowCounter <= 6))
+		{
+			IconDest.x = GBIptr->GBI_Dest.x + GBIptr->GBI_Dest.w - 60;
+			IconDest.y = GBIptr->GBI_Dest.y + 8;
+			IconDest.w = IconDest.h = 48;
+			SDL_RenderTexture(GIptr->GI_MainRenderer, GIptr->GI_MainTexture, DiceSrceptr, &IconDest);
+			DiceSrceptr++;
+		}
+
 		TextDest.x = GBIptr->GBI_Dest.x + GBIptr->GBI_TextOffsetX;
 		TextDest.y = GBIptr->GBI_Dest.y + GBIptr->GBI_TextOffsetY;
 		TEXT_WriteText(GIptr, Color, &TextDest, GBIptr->GBI_Text, 1);
@@ -134,7 +149,7 @@ INT GAMEBOARD_RenderBorder(PGAME_INFO GIptr)
 
 	Rect.x = 590;
 	Rect.y = 860;
-	Rect.w = 735;
+	Rect.w = 731;
 	Rect.h = 170;
 	for (I = 0; I < 5; I++)
 	{

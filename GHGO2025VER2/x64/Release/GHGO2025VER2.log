@@ -1,12 +1,11 @@
-﻿  Score Handler.cpp
-C:\GHGO2025VER2\Score Handler.cpp(12,13): warning C4101: 'Mask': unreferenced local variable
-C:\GHGO2025VER2\Score Handler.cpp(12,27): warning C4101: 'SSFlag': unreferenced local variable
-C:\GHGO2025VER2\Score Handler.cpp(12,19): warning C4101: 'LSFlag': unreferenced local variable
-C:\GHGO2025VER2\Score Handler.cpp(78,18): warning C4101: 'RIptr': unreferenced local variable
-C:\GHGO2025VER2\Score Handler.cpp(79,18): warning C4101: 'DIptr': unreferenced local variable
-C:\GHGO2025VER2\Score Handler.cpp(314,16): warning C4101: 'Score': unreferenced local variable
+﻿  Game Board Handler.cpp
+C:\GHGO2025VER2\Game Board Handler.cpp(73,18): warning C4101: 'BonusText': unreferenced local variable
+C:\GHGO2025VER2\Game Board Handler.cpp(74,21): warning C4101: 'TextXCenter': unreferenced local variable
+C:\GHGO2025VER2\Game Board Handler.cpp(80,18): warning C4101: 'DIptr': unreferenced local variable
+C:\GHGO2025VER2\Game Board Handler.cpp(127,25): warning C4101: 'Y': unreferenced local variable
+C:\GHGO2025VER2\Game Board Handler.cpp(128,19): warning C4101: 'Dest': unreferenced local variable
   Generating code
-  1 of 199 functions ( 0.5%) were compiled, the rest were copied from previous compilation.
+  2 of 198 functions ( 1.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     8 functions had inline decision re-evaluated but remain unchanged
   Finished generating code

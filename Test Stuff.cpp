@@ -32,7 +32,7 @@ INT TEST_Render(PGAME_INFO GIptr)
 	Dest.h = 300;
 	SDL_RenderTexture(GIptr->GI_MainRenderer, GIptr->GI_MainTexture, &DisplayScoreTable[0], &Dest);
 
-	Dest.x = 1560;
+	Dest.x = 1562;
 	Dest.y =  450;
 	Dest.w =  240;
 	Dest.h =  120;
@@ -47,7 +47,7 @@ INT TEST_Render(PGAME_INFO GIptr)
 
 	sprintf_s(Text, sizeof(Text), "%04d", GIptr->GI_CurrentScore);
 	Dest.x = TEXT_CalculateCenterText(GIptr, Text, 2, 240);
-	Dest.x += 1560;
+	Dest.x += 1562;
 	Dest.y = 485;
 	TEXT_WriteText(GIptr, Color, &Dest, Text, 2);
 

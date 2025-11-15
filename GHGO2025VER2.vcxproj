@@ -148,6 +148,7 @@
     <ClCompile Include="Text Handler.cpp" />
     <ClCompile Include="Texture Handler.cpp" />
     <ClCompile Include="Utilities.cpp" />
+    <ClCompile Include="Verification Handler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Defines.h" />
