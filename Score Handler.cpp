@@ -12,17 +12,8 @@ INT SCORE_ProcessUpper(PGAME_INFO GIptr)
 	INT        Mask, LSFlag, SSFlag;
 	PDICE_INFO DIptr;
 	PROLL_INFO RIptr;
-/*
-	RIptr = &GIptr->GI_RollData;
-	DIptr = RIptr->RI_DiceRolls[RIptr->RI_CurRoll];
-	printf("Row [%d] Col [%d]\n", Row, Col);
 
-	if (Row >= 1 && Row <= 6)
-	{
-		printf("Score Dice\n");
-	}
-*/
-	SCORE_GetRowCol(GIptr, &Row, &Col);
+	if((SCORE_GetRowCol(GIptr, &Row, &Col)) == FALSE) return(FALSE);
 	if(GIptr->GI_ScoreColumns[Col][Row].GBI_ScoredFlag == TRUE) return(FALSE);
 	Score = 0;
 

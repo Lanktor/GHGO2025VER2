@@ -3,6 +3,7 @@
 INT CheckForGameCompleted(PGAME_INFO GIptr);
 INT EndOfGameHandler(PGAME_INFO GIptr);
 INT GameLoop(PGAME_INFO GIptr);
+INT HighScoreHandler(PGAME_INFO GIptr);
 INT InitializeApplication(PGAME_INFO GIptr);
 INT RulesHandler(PGAME_INFO GIptr);
 INT StartOfGameHandler(PGAME_INFO GIptr);
@@ -19,6 +20,7 @@ INT DICE_ProcessRoll(PGAME_INFO GIptr);
 INT DICE_Render(PGAME_INFO GIptr);
 INT DICE_Roll(PGAME_INFO GIptr, PDICE_INFO DIptr);
 
+INT GAMEBOARD_Initiate(PGAME_INFO GIptr);
 INT GAMEBOARD_ProcessHover(PGAME_INFO GIptr);
 INT GAMEBOARD_ProcessMouseClick(PGAME_INFO GIptr);
 INT GAMEBOARD_Render(PGAME_INFO GIptr);
@@ -32,7 +34,7 @@ INT BUTTON_Update(PGAME_INFO GIptr, PBUTTON_INFO BIptr, INT DownOffset, INT Hove
 
 INT TEXT_CalculateCenterText(PGAME_INFO GIptr, const char *Text, INT Scale, INT ItemWidth);
 INT TEXT_RenderScore(PGAME_INFO GIptr);
-INT TEXT_WriteText(PGAME_INFO GIptr, SDL_Color Color, PSDL_FRect Dest, const char *Text, INT Scale);
+INT TEXT_WriteText(PGAME_INFO GIptr, SDL_Color Color, PSDL_FRect Dest, const char *Text, FLOAT Scale);
 INT TEXT_WriteTextRaised(PGAME_INFO GIptr, SDL_Color TopColor, SDL_Color BotColor, PSDL_FRect Dest, const char *Text, INT Scale, INT Offset);
 
 INT TEST_Render(PGAME_INFO GIptr);
@@ -58,3 +60,7 @@ INT SCORE_TwoPair(PGAME_INFO GIptr, INT Row, INT Col);
 INT VERIFY_FullHouse(PGAME_INFO GIptr);
 INT VERIFY_MatchedCount(PGAME_INFO GIptr, INT MatchCount);
 INT VERIFY_TwoPair(PGAME_INFO GIptr);
+
+INT START_CreateNewGame(PGAME_INFO GIptr);
+INT START_DisplayName(PGAME_INFO GIptr);
+INT START_ProcessPlayerNameEntry(PGAME_INFO GIptr, PSDL_Event EIptr);

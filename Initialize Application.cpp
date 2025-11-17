@@ -28,7 +28,7 @@ INT InitializeApplication(PGAME_INFO GIptr)
 	GIptr->GI_RNGState = SDL_rand_bits();
 
 
-	sprintf_s(GIptr->GI_PlayerName, MAX_NAME_LENGTH, "%s", "GUEST");
+	memset(GIptr->GI_PlayerName, 0, MAX_NAME_LENGTH);
 
 	if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO))
 	{

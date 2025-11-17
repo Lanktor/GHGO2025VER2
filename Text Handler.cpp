@@ -4,7 +4,7 @@
 #include <Structs.h>
 #include <Prototype.h>
 
-INT TEXT_WriteText(PGAME_INFO GIptr, SDL_Color Color, PSDL_FRect Dest, const char *Text, INT Scale)
+INT TEXT_WriteText(PGAME_INFO GIptr, SDL_Color Color, PSDL_FRect Dest, const char *Text, FLOAT Scale)
 {
 	INT              I, Len, Value;
 	PSDL_FRect       TIptr, UCFont, LCFont, NSFont;

@@ -12,9 +12,9 @@ typedef struct _BUTTON_INFO BUTTON_INFO, *PBUTTON_INFO, **PPBUTTON_INFO;
 #define SZ_BUTTON_INFO sizeof(_BUTTON_INFO)
 #define BUTTON_INFO_NULL (PBUTTON_INFO)0
 
-typedef struct _HI_SCORE HI_SCORE, *PHI_SCORE, **PPHI_SCORE;
-#define SZ_HI_SCORE sizeof(_HI_SCORE)
-#define HI_SCORE_NULL (PHI_SCORE)0
+typedef struct _HI_SCORE_DATA HI_SCORE_DATA, *PHI_SCORE_DATA, **PPHI_SCORE_DATA;
+#define SZ_HI_SCORE_DATA sizeof(_HI_SCORE_DATA)
+#define HI_SCORE_DATA_NULL (PHI_SCORE_DATA)0
 
 
 typedef struct _PLAYER_INFO PLAYER_INFO, *PPLAYER_INFO, **PPPLAYER_INFO;
@@ -59,7 +59,7 @@ struct _GAMEBOARD_INFO
 	SDL_FRect   GBI_Dest;
 	FLOAT       GBI_TextOffsetX;
 	FLOAT       GBI_TextOffsetY;
-	const char  GBI_Text[30];
+	const char  GBI_Text[SZ_SCORE_TEXT];
 	INT         GBI_Flag;
 	INT         GBI_Score;
 	INT         GBI_ScoredFlag;
@@ -81,10 +81,10 @@ struct _BUTTON_INFO
 	char      BI_Text[64];
 };
 
-struct _HI_SCORE
+struct _HI_SCORE_DATA
 {
-	CHAR HS_Name[MAX_NAME_LENGTH + 1];
-	INT  HS_Score;
+	CHAR HSD_Name[MAX_NAME_LENGTH + 1];
+	INT  HSD_Score;
 };
 
 struct _GAME_INFO
@@ -124,7 +124,6 @@ struct _GAME_INFO
 
 	PLAYER_INFO   GI_Player;
 	CHAR          GI_PlayerName[MAX_NAME_LENGTH + 1];
-	HI_SCORE      GI_HiScoreList[MAX_NAMES];
 
 	ROLL_INFO     GI_RollData;
 

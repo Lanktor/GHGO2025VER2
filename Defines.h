@@ -23,6 +23,7 @@ typedef SDL_FRect *PSDL_FRect, **PPSDL_FRect;
 typedef SDL_Renderer *PSDL_Renderer, **PPSDL_Renderer;
 typedef SDL_Surface *PSDL_Surface, **PPSDL_Surface;
 typedef SDL_Texture *PSDL_Texture, **PPSDL_Texture;
+typedef SDL_Event *PSDL_Event, **PPSDL_Event;
 typedef Mix_Music *PMix_Music, **PPMix_Music;
 typedef Mix_Chunk *PMix_Chunk, **PPMix_Chunk;
 
@@ -101,6 +102,8 @@ typedef Mix_Chunk *PMix_Chunk, **PPMix_Chunk;
 
 
 #define GAMEBOARD_CONST_MAX_COLUMNS         5
+
+#define SZ_SCORE_TEXT                      30
 
 #define DICE_NO_FLAG                3000
 #define DICE_NO_IDENT               3001

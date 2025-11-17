@@ -34,8 +34,15 @@ BUTTON_INFO StartGameButtons[] =
 
 BUTTON_INFO EndGameButtons[] =
 {
-	{BUTTON_IDENT_REPLAY,  BUTTON_STATE_UP,   48, 18, 0, 750, 211,  61,    30,   40, 211,  61, "REPLAY"},
-	{BUTTON_IDENT_EXIT,    BUTTON_STATE_UP,   70, 18, 0, 750, 211,  61,    30,  110, 211,  61, "EXIT"},
+	//	{BUTTON_IDENT_HISCORE, BUTTON_STATE_UP,   20, 18, 0, 750, 211,  61,    30,   40, 211,  61, "HIGH SCORE"},
+	//	{BUTTON_IDENT_REPLAY,  BUTTON_STATE_UP,   48, 18, 0, 750, 211,  61,    30,  110, 211,  61, "REPLAY"},
+		{BUTTON_IDENT_EXIT,    BUTTON_STATE_UP,   70, 18, 0, 750, 211,  61,    20,  970, 211,  61, "EXIT"},
+		{-1,  -1,   -1, -1, -1,  -1, -1, -1, -1,  -1},
+};
+BUTTON_INFO HighScoreButtons[] =
+{
+	{BUTTON_IDENT_PLAY,  BUTTON_STATE_UP,   70, 18, 0, 750, 211,  61,    20,  900, 211,  61, "PLAY"},
+	{BUTTON_IDENT_EXIT,  BUTTON_STATE_UP,   70, 18, 0, 750, 211,  61,    20,  970, 211,  61, "EXIT"},
 	{-1,  -1,   -1, -1, -1,  -1, -1, -1, -1,  -1},
 };
 
@@ -50,7 +57,7 @@ SDL_Color GradientColor[] =
 
 SDL_FRect BasicAreas[] = 
 {
-	{460,  70, 950, 715}, // Game Board
+	{800,  70, 640, 715}, // Game Board
 	{600, 875, 710, 140}, // Dice
 	{-1}, // END OF LIST
 };

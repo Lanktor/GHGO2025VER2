@@ -43,19 +43,11 @@ INT GameLoop(PGAME_INFO GIptr)
 				{
 					RulesHandler(GIptr);
 				}
+
 				if (Event.key.scancode == SDL_SCANCODE_Q)
 				{
-					DICE_Initiate(GIptr);
-					DICE_Clear(GIptr, GIptr->GI_RollData.RI_DiceRolls[GIptr->GI_RollData.RI_CurRoll]);
-					DICE_Roll(GIptr, GIptr->GI_RollData.RI_DiceRolls[GIptr->GI_RollData.RI_CurRoll]);
 				}
-				if ((Event.key.scancode == SDL_SCANCODE_A) || (Event.key.scancode == SDL_SCANCODE_LEFT))
-				{
-				}
-				if ((Event.key.scancode == SDL_SCANCODE_D) || (Event.key.scancode == SDL_SCANCODE_RIGHT))
-				{
-				}
-				break;
+			break;
 
 			case SDL_EVENT_MOUSE_BUTTON_DOWN:
 				if (Event.button.button == SDL_BUTTON_LEFT)
@@ -66,7 +58,7 @@ INT GameLoop(PGAME_INFO GIptr)
 					if (ButtonIdent == BUTTON_IDENT_RIPTIDE) DICE_ProcessRiptide(GIptr);
 
 					GAMEBOARD_ProcessMouseClick(GIptr);
-//					printf("MX = [%.02f] MY = [%.02f]\n", GIptr->GI_MouseX, GIptr->GI_MouseY);
+					printf("MX = [%.02f] MY = [%.02f]\n", GIptr->GI_MouseX, GIptr->GI_MouseY);
 				}
 				if (Event.button.button == SDL_BUTTON_RIGHT)
 				{
@@ -81,19 +73,6 @@ INT GameLoop(PGAME_INFO GIptr)
 				break;
 
 			}
-		}
-
-		if (KeyState[SDL_SCANCODE_A] || KeyState[SDL_SCANCODE_LEFT])
-		{
-		}
-		if (KeyState[SDL_SCANCODE_D] || KeyState[SDL_SCANCODE_RIGHT])
-		{
-		}
-		if (KeyState[SDL_SCANCODE_W] || KeyState[SDL_SCANCODE_UP])
-		{
-		}
-		else
-		{
 		}
 
 		if (GIptr->GI_MouseDownFlag == TRUE)
@@ -123,7 +102,7 @@ INT GameLoop(PGAME_INFO GIptr)
 
 		if((CheckForGameCompleted(GIptr)) == GAME_COMPLETED)
 		{
-			EndOfGameHandler(GIptr);
+			HighScoreHandler(GIptr);
 		}
 
 		GIptr->GI_FrameTime = SDL_GetTicks() - GIptr->GI_FrameStart;
@@ -132,7 +111,7 @@ INT GameLoop(PGAME_INFO GIptr)
 
 		if (SDL_GetTicks() >= GIptr->GI_SecondsCounter + 1000)
 		{
-//			printf("FPS: [%d] Delay = [%d]\n", GIptr->GI_FrameCounter, GIptr->GI_FRAME_DELAY - GIptr->GI_FrameTime);
+			printf("GameLoop: FPS: [%d] Delay = [%d]\n", GIptr->GI_FrameCounter, GIptr->GI_FRAME_DELAY - GIptr->GI_FrameTime);
 			GIptr->GI_FrameCounter = 0;
 			GIptr->GI_SecondsCounter = SDL_GetTicks();
 		}
@@ -147,7 +126,11 @@ INT CheckForGameCompleted(PGAME_INFO GIptr)
 	INT Row, Col;
 	PGAMEBOARD_INFO GBIptr;
 
-	if (GIptr->GI_EOGTestHandler >= 10) return(GAME_COMPLETED);
+	if (GIptr->GI_EOGTestHandler >= 5)
+	{
+		GIptr->GI_EOGTestHandler = 0;
+		return(GAME_COMPLETED);
+	}
 
 	for (Col = 0; Col < 5; Col++)
 	{

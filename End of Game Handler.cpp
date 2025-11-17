@@ -19,10 +19,8 @@ INT EndOfGameHandler(PGAME_INFO GIptr)
 	SDL_Event          Event;
 	SDL_FRect          Srce, Dest, TextDest, HiScoreDest;
 	PPLAYER_INFO       PIptr;
-	extern SDL_FRect   HiScoreBox[];
 	extern BUTTON_INFO EndGameButtons[];
 
-	PIptr = &GIptr->GI_Player;
 
 	GIptr->GI_TARGET_FPS = 80;
 	GIptr->GI_FRAME_DELAY = 1000 / GIptr->GI_TARGET_FPS;
@@ -30,15 +28,6 @@ INT EndOfGameHandler(PGAME_INFO GIptr)
 	GIptr->GI_SecondsCounter = GIptr->GI_PrevTime = SDL_GetTicks();
 	GIptr->GI_FrameCounter = 0;
 	KeyState = SDL_GetKeyboardState(NULL);
-
-
-	Srce.x = Dest.x = 0;
-	Srce.y = Dest.y = 0;
-	Srce.w = Dest.w = GIptr->GI_ScreenWidth;
-	Srce.h = Dest.h = GIptr->GI_ScreenHeight;
-	TextDest.y = 140;
-
-	ViewHiScoreFlag = FALSE;
 
 	for (Quit = FALSE; Quit != TRUE; GIptr->GI_FrameCounter++)
 	{
@@ -74,18 +63,6 @@ INT EndOfGameHandler(PGAME_INFO GIptr)
 						TerminateApplication(GIptr);
 						Quit = TRUE;
 					}
-					if (ButtonIdent == BUTTON_IDENT_HISCORE)
-					{
-						//						ViewHiScoreFlag = (ViewHiScoreFlag == TRUE) ? FALSE : TRUE;
-						BUTTON_ResetButtonState(GIptr, EndGameButtons, BUTTON_STATE_UP);
-					}
-					if (ButtonIdent == BUTTON_IDENT_REPLAY)
-					{
-						BUTTON_ResetButtonState(GIptr, EndGameButtons, BUTTON_STATE_UP);
-						Mix_PlayMusic(GIptr->GI_BkgMusic, -1);
-						Mix_VolumeMusic(80);
-						GameLoop(GIptr);
-					}
 				}
 				if (Event.button.button == SDL_BUTTON_RIGHT)
 				{
@@ -114,18 +91,10 @@ INT EndOfGameHandler(PGAME_INFO GIptr)
 		SDL_SetRenderDrawColor(GIptr->GI_MainRenderer, 0x00, 0x13, 0x63, 0x00);
 		SDL_RenderClear(GIptr->GI_MainRenderer);
 
-		SDL_RenderTexture(GIptr->GI_MainRenderer, GIptr->GI_EndOfGameTexture, &Srce, &Dest);
+		SDL_RenderTexture(GIptr->GI_MainRenderer, GIptr->GI_EndOfGameTexture, NULL, NULL);
 		BUTTON_Update(GIptr, EndGameButtons, 212, 424);
 		BUTTON_IsButtonHover(GIptr, EndGameButtons);
 
-		if (ViewHiScoreFlag == TRUE)
-		{
-			HiScoreDest.x = 640;
-			HiScoreDest.y = 240;
-			HiScoreDest.w = HiScoreBox->w;
-			HiScoreDest.h = HiScoreBox->h;
-			SDL_RenderTexture(GIptr->GI_MainRenderer, GIptr->GI_MainTexture, HiScoreBox, &HiScoreDest);
-		}
 		ENDOFGAMEHANDLER_DisplayData(GIptr);
 		SDL_RenderPresent(GIptr->GI_MainRenderer);
 
@@ -135,7 +104,7 @@ INT EndOfGameHandler(PGAME_INFO GIptr)
 
 		if (SDL_GetTicks() >= GIptr->GI_SecondsCounter + 1000)
 		{
-			printf("FPS: [%d]\n", GIptr->GI_FrameCounter);
+			printf("EnbdofGameHandler: FPS: [%d]\n", GIptr->GI_FrameCounter);
 			GIptr->GI_FrameCounter = 0;
 			GIptr->GI_SecondsCounter = SDL_GetTicks();
 		}
@@ -147,14 +116,14 @@ INT ENDOFGAMEHANDLER_DisplayData(PGAME_INFO GIptr)
 {
 	CHAR      Text[1024];
 	SDL_FRect Dest;
-	SDL_Color WhiteTextColor = { 255, 255, 255 };
+	SDL_Color TopTextColor = { 211, 243, 241 };
 	SDL_Color BlackTextColor = { 0,   0,   0 };
 
 	Dest.y = 40;
 	sprintf_s(Text, sizeof(Text), "CREDITS", GIptr->GI_CurrentLevel);
-	Dest.x = TEXT_CalculateCenterText(GIptr, Text, 4, GIptr->GI_ScreenWidth);
+	Dest.x = TEXT_CalculateCenterText(GIptr, Text, 3, GIptr->GI_ScreenWidth);
 
-	//	TEXT_WriteTextRaised(GIptr, WhiteTextColor, BlackTextColor, &Dest, Text, 4, 4);
+	TEXT_WriteTextRaised(GIptr, TopTextColor, BlackTextColor, &Dest, Text, 3, 3);
 
 	return(TRUE);
 }

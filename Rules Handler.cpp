@@ -126,7 +126,6 @@ INT RULESHANDLER_DisplayData(PGAME_INFO GIptr)
 	Dest.y = 60;
 	sprintf_s(Text, sizeof(Text), "RULES", GIptr->GI_CurrentLevel);
 	Dest.x = TEXT_CalculateCenterText(GIptr, Text, 4, GIptr->GI_ScreenWidth);
-
 	TEXT_WriteTextRaised(GIptr, TopTextColor, BlackTextColor, &Dest, Text, 4, 4);
 
 	return(TRUE);
