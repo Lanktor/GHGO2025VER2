@@ -122,6 +122,9 @@ typedef Mix_Chunk *PMix_Chunk, **PPMix_Chunk;
 #define SCORE_FOUROFAKIND           75
 #define SCORE_FIVEOFAKIND          100
 
+#define VERIFY_TWO_PAIR_TWO_COUNT  5200
+#define VERIFY_TWO_PAIR_FOUR_COUNT 5201
+
 #define BACKGROUND_TEXTURE   "Resources//Background Texture.png"
 #define GAMEBOARD_TEXTURE    "Resources//Game Board Texture.png"
 #define RULESSCREEN_TEXTURE  "Resources//RulesScreen.png"

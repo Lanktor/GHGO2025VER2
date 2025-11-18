@@ -6,7 +6,7 @@
 #include <Structs.h>
 #include <Prototype.h>
 
-INT VERIFY_TwoPair(PGAME_INFO GIptr)
+INT VERIFY_TwoPair(PGAME_INFO GIptr, PINT TypeFlag)
 {
 	INT        I, Score, TwoCount, FourCount;
 	INT        Count[6] = { 0 };
@@ -25,12 +25,29 @@ INT VERIFY_TwoPair(PGAME_INFO GIptr)
 	TwoCount = FourCount = 0;
 	for (I = 0; I < 6; I++)
 	{
-		if (Count[I] == 4) FourCount++;
-		if ((Count[I] == 2) || Count[I] == 3) TwoCount++;
+		if (Count[I] == 4)
+		{
+			FourCount++;
+		}
+		if (Count[I] == 2)
+		{
+			TwoCount++;
+		}
+		if (Count[I] == 3)
+		{
+			TwoCount++;
+		}
 	}
 
-	if (TwoCount == 2 || FourCount == 1)
+	if (TwoCount == 2)
 	{
+		*TypeFlag = VERIFY_TWO_PAIR_TWO_COUNT;
+		return(TRUE);
+	}
+
+	if (FourCount == 1)
+	{
+		*TypeFlag = VERIFY_TWO_PAIR_FOUR_COUNT;
 		return(TRUE);
 	}
 

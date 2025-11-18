@@ -8,7 +8,7 @@
 
 INT SCORE_ProcessUpper(PGAME_INFO GIptr)
 {
-	INT        I, Row, Col, Score;
+	INT        I, Row, Col, Score, TypeFlag;
 	INT        Mask, LSFlag, SSFlag;
 	PDICE_INFO DIptr;
 	PROLL_INFO RIptr;
@@ -31,7 +31,7 @@ GIptr->GI_EOGTestHandler++; // End of Game Artificial Game Ending
 
 		// Ripples - Two Pair
 		case 7:
-			if((VERIFY_TwoPair(GIptr)) == TRUE)
+			if((VERIFY_TwoPair(GIptr, &TypeFlag)) == TRUE)
 			{
 				Score = (SCORE_TWOPAIR * (Col + 1));
 			}

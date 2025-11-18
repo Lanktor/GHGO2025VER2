@@ -58,7 +58,7 @@ INT GameLoop(PGAME_INFO GIptr)
 					if (ButtonIdent == BUTTON_IDENT_RIPTIDE) DICE_ProcessRiptide(GIptr);
 
 					GAMEBOARD_ProcessMouseClick(GIptr);
-					printf("MX = [%.02f] MY = [%.02f]\n", GIptr->GI_MouseX, GIptr->GI_MouseY);
+//					printf("MX = [%.02f] MY = [%.02f]\n", GIptr->GI_MouseX, GIptr->GI_MouseY);
 				}
 				if (Event.button.button == SDL_BUTTON_RIGHT)
 				{
@@ -111,7 +111,7 @@ INT GameLoop(PGAME_INFO GIptr)
 
 		if (SDL_GetTicks() >= GIptr->GI_SecondsCounter + 1000)
 		{
-			printf("GameLoop: FPS: [%d] Delay = [%d]\n", GIptr->GI_FrameCounter, GIptr->GI_FRAME_DELAY - GIptr->GI_FrameTime);
+//			printf("GameLoop: FPS: [%d] Delay = [%d]\n", GIptr->GI_FrameCounter, GIptr->GI_FRAME_DELAY - GIptr->GI_FrameTime);
 			GIptr->GI_FrameCounter = 0;
 			GIptr->GI_SecondsCounter = SDL_GetTicks();
 		}
