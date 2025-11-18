@@ -65,4 +65,8 @@ INT START_CreateNewGame(PGAME_INFO GIptr);
 INT START_DisplayName(PGAME_INFO GIptr);
 INT START_ProcessPlayerNameEntry(PGAME_INFO GIptr, PSDL_Event EIptr);
 
+INT COMPUTER_Initiate(PGAME_INFO GIptr);
+INT COMPUTER_ResetDiceTable(PGAME_INFO GIptr);
+INT COMPUTER_ResetScoreTable(PGAME_INFO GIptr);
+INT COMPUTER_RollTheDice(PGAME_INFO GIptr);
 INT COMPUTER_TakeTurn(PGAME_INFO GItpr);

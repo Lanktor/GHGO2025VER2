@@ -105,6 +105,7 @@ typedef Mix_Chunk *PMix_Chunk, **PPMix_Chunk;
 
 
 #define GAMEBOARD_CONST_MAX_COLUMNS         5
+#define GAMEBOARD_CONST_MAX_ROWS           11
 
 #define SZ_SCORE_TEXT                      30
 
