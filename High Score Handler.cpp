@@ -194,9 +194,9 @@ INT HISCORE_DisplayData(PGAME_INFO GIptr)
 	extern SDL_Color GradientColor[];
 
 	Rect.x = 675;
-	Rect.y = 55;
+	Rect.y = 200;
 	Rect.w = 600;
-	Rect.h = 600;
+	Rect.h = 500;
 	SDL_SetRenderDrawColor(GIptr->GI_MainRenderer, GradientColor[4].r, GradientColor[4].g, GradientColor[4].b, GradientColor[4].a);
 	SDL_RenderFillRect(GIptr->GI_MainRenderer, &Rect);
 	for (I = 0; I < 5; I++)
@@ -212,7 +212,7 @@ INT HISCORE_DisplayData(PGAME_INFO GIptr)
 		}
 	}
 
-	Rect.y = 80;
+	Rect.y = 230;
 	for (I = 0; I < HiScoreRecords; I++)
 	{
 		if(I >= 10) break;

@@ -146,7 +146,7 @@ INT SCORE_DiceData(PGAME_INFO GIptr, INT Row, INT Col)
 
 	return(Score);
 }
-
+/*
 INT SCORE_FullHouse(PGAME_INFO GIptr, INT Row, INT Col)
 {
 	INT        I, Score, ThreeFlag, TwoFlag;
@@ -304,7 +304,7 @@ INT SCORE_FiveOfAKind(PGAME_INFO GIptr, INT Row, INT Col)
 }
 
 
-
+*/
 
 
 

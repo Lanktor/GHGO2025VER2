@@ -56,6 +56,11 @@ INT DICE_InitiateTurn(PGAME_INFO GIptr)
 	PROLL_INFO RIptr;
 	PDICE_INFO DIptr;
 
+	if (GIptr->GI_CurrentTurn == HUMAN_PLAYER)
+	{
+		COMPUTER_TakeTurn(GIptr);
+	}
+
 	RIptr = &GIptr->GI_RollData;
 	RIptr->RI_CurRoll = 0;
 

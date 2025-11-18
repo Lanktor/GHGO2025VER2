@@ -196,5 +196,6 @@ INT START_CreateNewGame(PGAME_INFO GIptr)
 	DICE_Roll(GIptr, GIptr->GI_RollData.RI_DiceRolls[GIptr->GI_RollData.RI_CurRoll]);
 	GIptr->GI_CurrentScore = 0;
 	GIptr->GI_RNGState = SDL_rand_bits();
+	GIptr->GI_CurrentTurn = HUMAN_PLAYER;
 	return(TRUE);
 }

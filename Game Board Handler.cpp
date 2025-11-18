@@ -24,7 +24,6 @@ INT GAMEBOARD_Initiate(PGAME_INFO GIptr)
 			GBIptr->GBI_Flag = GAMEBOARD_FLAG_HOVER_OFF;
 		}
 	}
-
 	return(TRUE);
 }
 

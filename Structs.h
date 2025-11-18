@@ -29,6 +29,14 @@ typedef struct _ROLL_INFO ROLL_INFO, *PROLL_INFO, **PPROLL_INFO;
 #define SZ_ROLL_INFO sizeof(_ROLL_INFO)
 #define ROLL_INFO_NULL (PROLL_INFO)0
 
+typedef struct _COMP_SCORE_INFO COMP_SCORE_INFO, *PCOMP_SCORE_INFO, **PPCOMP_SCORE_INFO;
+#define SZ_COMP_SCORE_INFO sizeof(_COMP_SCORE_INFO)
+#define COMP_SCORE_INFO_NULL (PCOMP_SCORE_INFO)0
+
+typedef struct _COMP_PLAYER_INFO COMP_PLAYER_INFO, *PCOMP_PLAYER_INFO, **PPCOMP_PLAYER_INFO;
+#define SZ_COMP_PLAYER_INFO sizeof(_COMP_PLAYER_INFO)
+#define COMP_PLAYER_INFO_NULL (PCOMP_PLAYER_INFO)0
+
 typedef struct _GAMEBOARD_INFO GAMEBOARD_INFO, *PGAMEBOARD_INFO, **PPGAMEBOARD_INFO;
 #define SZ_GAMEBOARD_INFO sizeof(_GAMEBOARD_INFO)
 #define GAMEBOARD_INFO_NULL (PGAMEBOARD_INFO)0
@@ -50,6 +58,20 @@ struct _ROLL_INFO
 	INT        RI_Flag;
 	PSDL_FRect RI_DiceSrce;
 	PSDL_FRect RI_DiceSrceHover;
+};
+
+struct _COMP_SCORE_INFO
+{
+	INT CSI_Score;
+	INT CSI_ScoreFlag;
+};
+
+struct _COMP_PLAYER_INFO
+{
+	INT             CPI_RipTidesRemaining;
+	INT             CPI_CurRoll;
+	DICE_INFO       CPI_DiceRolls[MAX_ROLLS][MAX_DICE];
+	COMP_SCORE_INFO CPI_ScoreTable[5][11];
 };
 
 struct _GAMEBOARD_INFO
@@ -96,6 +118,7 @@ struct _GAME_INFO
 	INT           GI_GameVersion;
 	INT           GI_Active;
 	INT           GI_WinLoseFlag;
+	INT           GI_CurrentTurn;
 
 	INT           GI_TARGET_FPS;
 	INT           GI_FRAME_DELAY;
@@ -124,6 +147,7 @@ struct _GAME_INFO
 
 	PLAYER_INFO   GI_Player;
 	CHAR          GI_PlayerName[MAX_NAME_LENGTH + 1];
+	COMP_PLAYER_INFO GI_ComputerPlayer;
 
 	ROLL_INFO     GI_RollData;
 

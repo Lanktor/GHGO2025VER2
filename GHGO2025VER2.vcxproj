@@ -133,6 +133,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Button Handler.cpp" />
+    <ClCompile Include="Computer Player Handler.cpp" />
     <ClCompile Include="Dice Handler.cpp" />
     <ClCompile Include="End of Game Handler.cpp" />
     <ClCompile Include="Game Board Handler.cpp" />

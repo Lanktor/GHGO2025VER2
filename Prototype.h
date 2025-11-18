@@ -64,3 +64,5 @@ INT VERIFY_TwoPair(PGAME_INFO GIptr);
 INT START_CreateNewGame(PGAME_INFO GIptr);
 INT START_DisplayName(PGAME_INFO GIptr);
 INT START_ProcessPlayerNameEntry(PGAME_INFO GIptr, PSDL_Event EIptr);
+
+INT COMPUTER_TakeTurn(PGAME_INFO GItpr);

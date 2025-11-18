@@ -48,6 +48,9 @@ typedef Mix_Chunk *PMix_Chunk, **PPMix_Chunk;
 #define GAME_COMPLETED        5008
 #define GAME_NOT_COMPLETED    5009
 
+#define HUMAN_PLAYER          5100
+#define COMPUTER_PLAYER       5101
+
 #define GAME_VERSION          200
 #define GAME_BASE_SCORE       5000
 #define GAME_MAX_LEVEL_TIME   300 // Seconds
