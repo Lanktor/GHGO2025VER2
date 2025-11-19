@@ -126,16 +126,16 @@ INT CheckForGameCompleted(PGAME_INFO GIptr)
 	INT Row, Col;
 	PGAMEBOARD_INFO GBIptr;
 
-	if (GIptr->GI_EOGTestHandler >= 5)
-	{
-		GIptr->GI_EOGTestHandler = 0;
-		return(GAME_COMPLETED);
-	}
+//	if (GIptr->GI_EOGTestHandler >= 5)
+//	{
+//		GIptr->GI_EOGTestHandler = 0;
+//		return(GAME_COMPLETED);
+//	}
 
 	for (Col = 0; Col < 5; Col++)
 	{
 		GBIptr = GIptr->GI_ScoreColumns[Col];
-		for (Row = 0; GBIptr->GBI_NormalSrce != NULL; GBIptr++, Row++)
+		for (GBIptr++; GBIptr->GBI_NormalSrce != NULL; GBIptr++)
 		{
 			if(GBIptr->GBI_ScoredFlag == FALSE) return(GAME_NOT_COMPLETED);
 		}
