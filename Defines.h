@@ -92,10 +92,11 @@ typedef Mix_Chunk *PMix_Chunk, **PPMix_Chunk;
 #define BUTTON_IDENT_RULES     1012
 #define BUTTON_IDENT_HISCORE   1013
 #define BUTTON_IDENT_REPLAY    1014
-#define BUTTON_IDENT_NEXT      1015
-#define BUTTON_IDENT_RIPTIDE   1016
-#define BUTTON_IDENT_SAVE      1017
-#define BUTTON_IDENT_LOAD      1018
+#define BUTTON_IDENT_PREV      1015
+#define BUTTON_IDENT_NEXT      1016
+#define BUTTON_IDENT_RIPTIDE   1017
+#define BUTTON_IDENT_SAVE      1018
+#define BUTTON_IDENT_LOAD      1019
 #define BUTTON_IDENT_NONE      1100
 
 #define GAMEBOARD_FLAG_HOVER_ON          4000
@@ -127,7 +128,7 @@ typedef Mix_Chunk *PMix_Chunk, **PPMix_Chunk;
 
 #define BACKGROUND_TEXTURE   "Resources//Background Texture.png"
 #define GAMEBOARD_TEXTURE    "Resources//Game Board Texture.png"
-#define RULESSCREEN_TEXTURE  "Resources//RulesScreen.png"
+#define RULESSCREEN_TEXTURE  "Resources//RulesScreen Page 1.png"
 #define STARTSCREEN_TEXTURE  "Resources//StartofGameScreen.png"
 #define ENDSCREEN_TEXTURE    "Resources//EndOfGameScreen.png"
 #define PLAYER_TEXTURE       "Resources//Player TileSheet.png"

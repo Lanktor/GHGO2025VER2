@@ -156,9 +156,9 @@ INT START_DisplayName(PGAME_INFO GIptr)
 	SDL_FRect        Rect, Dest;
 	extern SDL_Color GradientColor[];
 
-	Dest.x = 	TEXT_CalculateCenterText(GIptr, "Player Name", 2, 1920);
+	Dest.x = 	TEXT_CalculateCenterText(GIptr, "Enter Name", 2, 1920);
 	Dest.y = 230;
-	TEXT_WriteText(GIptr, GradientColor[0], &Dest, "Player Name", 2);
+	TEXT_WriteText(GIptr, GradientColor[0], &Dest, "Enter Name", 2);
 
 	Rect.x = 590;
 	Rect.y = 300;

@@ -161,6 +161,9 @@ struct _GAME_INFO
 	PSDL_Renderer GI_MainRenderer;
 	PMix_Music    GI_BkgMusic;
 
+	INT           GI_CurRulesPage;
+	INT           GI_MaxRulesPages;
+
 	PLAYER_INFO   GI_Player;
 	CHAR          GI_PlayerName[MAX_NAME_LENGTH + 1];
 	COMP_PLAYER_INFO GI_ComputerPlayer;
@@ -172,7 +175,7 @@ struct _GAME_INFO
 
 	PSDL_Texture  GI_MainTexture;
 	PSDL_Texture  GI_TextTexture;
-	PSDL_Texture  GI_RulesTexture;
+	PSDL_Texture  GI_RulesTexture[6];
 	PSDL_Texture  GI_EndOfGameTexture;
 	PSDL_Texture  GI_StartOfGameTexture;
 	PSDL_Texture  GI_GameBoardTexture;

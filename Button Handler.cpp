@@ -140,6 +140,9 @@ INT BUTTON_ProcessClick(PGAME_INFO GIptr, PBUTTON_INFO BIptr)
 				Ident = BUTTON_IDENT_NEXT;
 				break;
 
+			case BUTTON_IDENT_PREV:
+				Ident = BUTTON_IDENT_PREV;
+				break;
 			default:
 				break;
 			}

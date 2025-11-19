@@ -13,7 +13,6 @@ INT RulesHandler(PGAME_INFO GIptr)
 	INT                Quit, Keys;
 	INT                ButtonIdent;
 	SDL_Event          Event;
-	SDL_FRect          Srce, Dest;
 	extern BUTTON_INFO RulesButtons[];
 
 	GIptr->GI_TARGET_FPS = 80;
@@ -24,11 +23,6 @@ INT RulesHandler(PGAME_INFO GIptr)
 
 	KeyState = SDL_GetKeyboardState(NULL);
 
-
-	Srce.x = Dest.x = 0;
-	Srce.y = Dest.y = 0;
-	Srce.w = Dest.w = GIptr->GI_ScreenWidth;
-	Srce.h = Dest.h = GIptr->GI_ScreenHeight;
 
 	BUTTON_ResetButtonState(GIptr, RulesButtons, BUTTON_STATE_UP);
 
@@ -66,6 +60,17 @@ INT RulesHandler(PGAME_INFO GIptr)
 					{
 						EndOfGameHandler(GIptr);
 					}
+
+					if (ButtonIdent == BUTTON_IDENT_NEXT)
+					{
+						GIptr->GI_CurRulesPage++;
+						if(GIptr->GI_CurRulesPage >= GIptr->GI_MaxRulesPages) GIptr->GI_CurRulesPage = 0;
+					}
+					if (ButtonIdent == BUTTON_IDENT_PREV)
+					{
+						GIptr->GI_CurRulesPage--;
+						if (GIptr->GI_CurRulesPage < 0) GIptr->GI_CurRulesPage = (GIptr->GI_MaxRulesPages - 1);
+					}
 				}
 				if (Event.button.button == SDL_BUTTON_RIGHT)
 				{
@@ -95,10 +100,9 @@ INT RulesHandler(PGAME_INFO GIptr)
 		SDL_SetRenderDrawColor(GIptr->GI_MainRenderer, 0x00, 0x13, 0x63, 0x00);
 		SDL_RenderClear(GIptr->GI_MainRenderer);
 
-		SDL_RenderTexture(GIptr->GI_MainRenderer, GIptr->GI_RulesTexture, &Srce, &Dest);
+		SDL_RenderTexture(GIptr->GI_MainRenderer, GIptr->GI_RulesTexture[GIptr->GI_CurRulesPage], NULL, NULL);
 		BUTTON_Update(GIptr, RulesButtons, 212, 424);
 		BUTTON_IsButtonHover(GIptr, RulesButtons);
-		RULESHANDLER_DisplayData(GIptr);
 
 		SDL_RenderPresent(GIptr->GI_MainRenderer);
 

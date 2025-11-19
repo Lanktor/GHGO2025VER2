@@ -17,10 +17,10 @@ INT GAMEBOARD_Initiate(PGAME_INFO GIptr)
 		GBIptr = GIptr->GI_ScoreColumns[I];
 		for (J = 0; GBIptr->GBI_NormalSrce != NULL; GBIptr++, J++)
 		{
+			if (J != 0) memset((PCHAR)GBIptr->GBI_Text, 0, SZ_SCORE_TEXT); // Multiplier Column Display, dont want to erase that
 			GBIptr->GBI_Flag = 0;
 			GBIptr->GBI_Score = 0;
 			GBIptr->GBI_ScoredFlag = FALSE;
-			memset((PCHAR)GBIptr->GBI_Text, 0, SZ_SCORE_TEXT);
 			GBIptr->GBI_Flag = GAMEBOARD_FLAG_HOVER_OFF;
 		}
 	}

@@ -1,0 +1,45 @@
+ONES = WAVES
+TWOS = SHELLS
+THREES = FISHES
+FOURS = ANCHORS
+FIVES = WHALES
+SIXES = POOLS
+
+SMALL STRAIGHT = SMALL SWELL
+LARGE STRAIGHT = LARGE SWELL
+FULL HOUSE = BREAKER
+4 OF A KIND = HIGH TIDE
+YAHTZEE = TIDAL WAVE
+
+WAVES 5 points each
+SHELLS
+FISHES
+ANCHORS
+WHALES
+POOLS
+SMALL SWELL 30
+LARGE SWELL 50
+BREAKER        40
+HIGH TIDE      40
+TIDAL WAVE  100
+
+SMALL STRAIGHT
+LARGE STRAIGHT
+FULL HOUSE
+4 OF A KIND
+YAHTZEE = TIDAL WAVE
+
+I have a Yahtzee like game only I use Sea type Icons instead of dice. I have a Waves, Shells, Fishes, Anchors,  Whales and Pools. Each one is worth five points if placed in the proper score box after the players roll has completed. A player has a max of three rolls to complete a sequence of icons that can then be scored. In addition to the boxes to score the icon types there are different sequence types that can also be scored. These are:
+
+1. Ripples (2 Pair) worth 40 points
+2. Seaweed (Chance) 25
+3. Breaker (Full House) 50 points
+4. High Tide (4 of a kind) 75 points
+5. Tidal Wave (Yahtzee) 100 points
+
+In addition there is not one column played but 5 columns. Each column has a score multiplier from 1-5 left to right. So, as an example, if you roll 3 'Waves' you could place them in column 5 and receive a score of 75 points for that particular box. As another example you could roll a High Tide and place that in column 3 and receive 225 points. 
+
+You receive 3 rolls per turn.
+There is another game addition called Riptide where you can just skip the turn completely and not take a penalty for scoring.
+
+If you try and score in a box the does not match either the icon, or the sequence type you will receive a zero. As an example, if you roll 2 'Fishes' and three 'Whales' and place that in the 'Anchor' column you will receive a zero.

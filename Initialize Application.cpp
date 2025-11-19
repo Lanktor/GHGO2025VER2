@@ -17,6 +17,7 @@ INT InitializeApplication(PGAME_INFO GIptr)
 	extern GAMEBOARD_INFO ScoreColumn3[];
 	extern GAMEBOARD_INFO ScoreColumn4[];
 	extern GAMEBOARD_INFO ScoreColumn5[];
+	extern const char *RulesScreens[];
 
 	SDL_srand(time(NULL));
 	memset(GIptr, 0, SZ_GAME_INFO);
@@ -26,6 +27,8 @@ INT InitializeApplication(PGAME_INFO GIptr)
 	GIptr->GI_MouseDownFlag = FALSE;
 	GIptr->GI_MouseUpFlag = TRUE;
 	GIptr->GI_RNGState = SDL_rand_bits();
+	GIptr->GI_CurRulesPage = 0;
+	GIptr->GI_MaxRulesPages = 6;
 
 
 	memset(GIptr->GI_PlayerName, 0, MAX_NAME_LENGTH);
@@ -80,10 +83,14 @@ INT InitializeApplication(PGAME_INFO GIptr)
 		SDL_Log("Couldn't create.load texture: %s", SDL_GetError());
 		return FALSE;
 	}
-	if ((GIptr->GI_RulesTexture = TEXTURE_Load(GIptr, RULESSCREEN_TEXTURE)) == NULL)
+
+	for(I = 0; I < GIptr->GI_MaxRulesPages; I++)
 	{
-		SDL_Log("Couldn't create.load texture: %s", SDL_GetError());
-		return FALSE;
+		if ((GIptr->GI_RulesTexture[I] = TEXTURE_Load(GIptr, RulesScreens[I])) == NULL)
+		{
+			SDL_Log("Couldn't create.load texture: %s", SDL_GetError());
+			return FALSE;
+		}
 	}
 
 	if ((GIptr->GI_TextTexture = TEXTURE_Load(GIptr, TEXT_TEXTURE)) == NULL)

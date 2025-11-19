@@ -91,7 +91,7 @@ INT HighScoreHandler(PGAME_INFO GIptr)
 
 		SDL_SetRenderDrawColor(GIptr->GI_MainRenderer, 0x00, 0x13, 0x63, 0x00);
 		SDL_RenderClear(GIptr->GI_MainRenderer);
-		SDL_RenderTexture(GIptr->GI_MainRenderer, GIptr->GI_EndOfGameTexture, NULL, NULL);
+		SDL_RenderTexture(GIptr->GI_MainRenderer, GIptr->GI_BackgroundTexture, NULL, NULL);
 		BUTTON_Update(GIptr, HighScoreButtons, 212, 424);
 		BUTTON_IsButtonHover(GIptr, HighScoreButtons);
 

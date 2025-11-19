@@ -7,6 +7,16 @@
 GAME_INFO Gamebuffer;
 PGAME_INFO Gameptr = &Gamebuffer;
 
+const char *RulesScreens[6] = 
+{
+	"Resources//RulesScreen Page 1.png",
+	"Resources//RulesScreen Page 2.png",
+	"Resources//RulesScreen Page 3.png",
+	"Resources//RulesScreen Page 4.png",
+	"Resources//RulesScreen Page 5.png",
+	"Resources//RulesScreen Page 6.png",
+};
+
 BUTTON_INFO GameLoopButtons[] =
 {
 	{BUTTON_IDENT_ROLL,    BUTTON_STATE_UP,  16, 18,    0, 750, 211,  61,   1340,  900, 210,  60, "ROLLS LEFT"},
@@ -20,6 +30,8 @@ BUTTON_INFO RulesButtons[] =
 {
 	{BUTTON_IDENT_CONTINUE, BUTTON_STATE_UP,   48, 18, 0, 750, 211,  61,    30,   40, 211,  61, "RETURN"},
 	{BUTTON_IDENT_EXIT,     BUTTON_STATE_UP,   70, 18, 0, 750, 211,  61,    30,  110, 211,  61, "EXIT"},
+	{BUTTON_IDENT_PREV,     BUTTON_STATE_UP,   70, 18, 0, 750, 211,  61,    30,  970, 211,  61, "PREV"},
+	{BUTTON_IDENT_NEXT,     BUTTON_STATE_UP,   70, 18, 0, 750, 211,  61,  1680,  970, 211,  61, "NEXT"},
 	{-1,  -1,   -1, -1, -1,  -1, -1, -1, -1,  -1},
 };
 
